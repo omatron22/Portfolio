@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   texts: string[];
@@ -13,14 +13,15 @@ const TypingAnimation = ({ texts, speed }: Props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentText((prev) => prev + texts[currentIndex].charAt(charIndex));
-      setCharIndex(charIndex + 1);
+      setCharIndex((prevCharIndex) => prevCharIndex + 1);
 
+      // When we finish typing out the current text
       if (charIndex === texts[currentIndex].length) {
         setTimeout(() => {
           setCurrentText("");
           setCharIndex(0);
           setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        }, 2000);
+        }, 2000);  // Pause before moving to the next word
       }
     }, speed);
 
@@ -31,4 +32,3 @@ const TypingAnimation = ({ texts, speed }: Props) => {
 };
 
 export default TypingAnimation;
-export {};

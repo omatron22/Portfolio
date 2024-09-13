@@ -8,11 +8,11 @@ const Project = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-base-100 text-base-content"> {/* DaisyUI classes */}
       <h1 className="text-4xl font-bold mb-8">My Projects</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <div key={index} className="card shadow-lg bg-base-200 p-6 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
             <p>{project.description}</p>
           </div>
@@ -23,4 +23,3 @@ const Project = () => {
 };
 
 export default Project;
-export {};

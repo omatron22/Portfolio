@@ -2,10 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Inter', sans-serif; /* Choose a font */
-}
-
-code {
-  font-family: 'Source Code Pro', Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
+/* You don't need to manually define the theme colors */
