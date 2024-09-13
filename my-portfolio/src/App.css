@@ -16,19 +16,15 @@
 }
 
 .App-header {
-  /* Replace hardcoded background and text colors */
-  /* Use Tailwind or DaisyUI classes in your component instead */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  /* No need for hardcoded color */
 }
 
 .App-link {
-  /* Instead of hardcoded colors, use text-primary or other classes */
 }
 
 @keyframes App-logo-spin {
