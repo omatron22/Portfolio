@@ -44,8 +44,13 @@ const ThreeDModelViewer: React.FC<ThreeDModelViewerProps> = ({ modelPath }) => {
         box.getCenter(center);
         gltf.scene.position.sub(center);
 
-        // Scale the model to be smaller
-        gltf.scene.scale.set(1, 1, 1); // Adjust this value to make the model smaller
+        // Set a default scale for the model (adjust if needed)
+        gltf.scene.scale.set(1, 1, 1); // You can adjust this to better fit your models
+
+        // Set camera position based on the model's size
+        const size = box.getSize(new THREE.Vector3()).length();
+        const distance = Math.max(size * 1.2, 5); // Ensure the distance is reasonable
+        camera.position.z = distance;
 
         const animate = function () {
           requestAnimationFrame(animate);
@@ -71,14 +76,12 @@ const ThreeDModelViewer: React.FC<ThreeDModelViewerProps> = ({ modelPath }) => {
     scene.add(directionalLight1);
     scene.add(directionalLight2);
 
-    camera.position.z = 4; // Adjust camera distance for visibility
-
     // Orbit controls for zoom/rotate
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.autoRotate = true;
     controls.maxDistance = 12; // Max zoom out
-    controls.minDistance = 3; // Min zoom in
+    controls.minDistance = 2; // Min zoom in
     controls.update();
 
     const currentMount = mountRef.current; // Save mountRef value

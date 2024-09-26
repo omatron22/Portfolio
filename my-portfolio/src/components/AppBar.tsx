@@ -13,14 +13,14 @@ function toggleTheme(themes: string[]) {
 
 export default function AppBar() {
   const [themes, setThemes] = useState<string[]>([]);
-  const [currentTheme, setCurrentTheme] = useState<string>("light"); // Tracks current theme
+  const [currentTheme, setCurrentTheme] = useState<string>("corporate"); // Tracks current theme
 
   useEffect(() => {
     fetch("/api/themes.json")  // Adjust the path if needed
       .then((response) => response.json())
       .then((data) => setThemes(data));
 
-    const savedTheme = localStorage.getItem("theme") || "light"; 
+    const savedTheme = localStorage.getItem("theme") || "corporate"; 
     document.querySelector("html")?.setAttribute("data-theme", savedTheme);
     setCurrentTheme(savedTheme);  // Set current theme on page load
   }, []);
@@ -28,13 +28,13 @@ export default function AppBar() {
   const handleThemeChange = () => {
     toggleTheme(themes);
     const html = document.querySelector("html");
-    const newTheme = html?.getAttribute("data-theme") || "light";
+    const newTheme = html?.getAttribute("data-theme") || "corporate";
     setCurrentTheme(newTheme);  // Update current theme
   };
 
   const themeIcons: Record<string, string> = {
-    light: "mdi:weather-sunny",   
-    dark: "mdi:weather-night",    
+    corporate: "mdi:weather-sunny",   
+    dracula: "mdi:weather-night",    
     retro: "mdi:cassette",    
     aqua: "mdi:waves",            
     cyberpunk: "mdi:bee"          

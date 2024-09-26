@@ -2,33 +2,70 @@ import React from "react";
 import TypingAnimation from "../components/TypingAnimation";
 import { Icon } from "@iconify-icon/react";
 import ThreeDModelViewer from '../components/ThreeDModelViewer';  // Import the 3D Model Viewer
+import SimpleImageSlider from "react-simple-image-slider"; // Image slider component
+import MySVGComponent from '../components/MySVGComponent';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-base-100 text-base-content">
-      {/* Hero Section */}
-      <section className="hero flex flex-col lg:flex-row items-start justify-start py-20 px-10"> 
-        <div className="lg:w-1/2">
-          {/* Typing Animation and Image on the Left */}
-          <TypingAnimation
-            texts={["Hey, I'm Omar!"]}
-            speed={200} // Slower typing speed
-          />
-          <img
-            src="/me.jpeg"
-            alt="Omar's Profile"
-            className="rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover my-6" 
-          />
+<div className="min-h-screen bg-base-100 text-base-content">
+  {/* Hero Section */}
+  <section className="relative flex flex-col justify-start items-center p-0 m-0 overflow-hidden h-auto">
+    {/* Typing Animation - Top Center */}
+    <div className="z-10 text-center absolute top-10 w-full">
+      <TypingAnimation
+        texts={["Hey, I'm Omar!"]}
+        speed={200} // Adjust typing speed
+      />
+    </div>
+
+    {/* SVG Component - Increased size */}
+    <div className="w-full h-auto flex justify-start items-center mt-4 mb-2">
+      <MySVGComponent className="w-4/5 h-auto ml-auto" />
+    </div>
+
+  </section>
+
+      {/* About Section - Reduced padding */}
+      <section className="about bg-base-200 py-10 flex">
+        <div className="lg:w-1/2 text-left px-10">
+          <h2 className="text-4xl font-semibold mb-6">About me</h2>
+          <div className="card shadow-lg bg-base-300 p-6">
+            <p className="text-lg leading-relaxed text-base-content">
+              Hi! My name is Omar Espinoza. I'm from Ventura, California. I spend most of my time working on a project, making music or being outdoors. I love to experience and I live to create. 
+            </p>
+          </div>
         </div>
-        <div className="lg:w-1/2">
-          {/* Placeholder for future content */}
-        </div>
-      </section>
+
+  <div className="lg:w-1/2 flex items-center justify-center">
+    {/* Image Slider with original rounded corners preserved */}
+    <div className="rounded-xl overflow-hidden shadow-lg" style={{ width: '450px', height: '300px' }}>
+      <SimpleImageSlider
+        width={450}
+        height={300}
+        images={[
+          { url: "/snowboarding.jpg" },
+          { url: "/guitar.jpg" },
+          { url: "/nature.jpeg" },
+          { url: "/basketball.jpg" }
+        ]}
+        showBullets={true}
+        showNavs={false}
+        autoPlay={false}
+        slideDuration={4}
+        style={{
+          borderRadius: '12px',
+          clipPath: 'inset(0 round 12px)',
+        }}
+      />
+    </div>
+  </div>
+</section>
+
 
       {/* Education Section */}
       <section className="education bg-base-200 py-10 flex">
         <div className="lg:w-1/2 text-left px-10">
-          <h2 className="text-4xl font-semibold mb-6">My Education</h2>
+          <h2 className="text-4xl font-semibold mb-6">Education</h2>
           <div className="card shadow-lg bg-base-300 p-4 mb-6">
             <h3 className="text-2xl font-bold text-primary">University of California, Los Angeles</h3>
             <p className="text-lg text-gray-500">(2020-2024)</p>
@@ -56,7 +93,7 @@ const Home = () => {
       {/* Experience Section */}
       <section className="experience bg-base-100 py-10 flex">
         <div className="lg:w-1/2 text-left px-10">
-          <h2 className="text-4xl font-semibold mb-6">My Experience</h2>
+          <h2 className="text-4xl font-semibold mb-6">Experience</h2>
           <div className="card shadow-lg bg-base-300 p-4 mb-6">
             <h3 className="text-2xl font-bold text-primary">Experior Laboratories</h3>
             <p className="text-lg text-gray-500">Programming Intern (Summer 2023)</p>
@@ -79,7 +116,7 @@ const Home = () => {
         </div>
 
         <div className="lg:w-1/2 flex items-center justify-center">
-          <ThreeDModelViewer modelPath="/computer/scene.gltf" />
+        <MySVGComponent className="w-4/5 h-auto ml-auto" />
         </div>
       </section>
 
@@ -170,137 +207,74 @@ const Home = () => {
 
 {/* Tech Stack Section */}
 <section className="tech-stack bg-base-200 py-10 text-center">
-  <h2 className="text-4xl font-semibold mb-6">Technologies</h2>
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-    
-    {/* C/C++ */}
-    <div className="flex flex-col items-center">
-      <img src="/c:c++.png" alt="C/C++" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">C/C++</span>
+  <h2 className="text-3xl font-semibold mb-6">Technologies</h2>
+  <div className="grid grid-cols-6 sm:grid-cols-8 gap-x-0.5 gap-y-4 max-w-full mx-auto px-2">
+    {/* Icon List */}
+    <div className="flex items-center justify-center">
+      <img src="/c:c++.png" alt="C/C++" className="w-16 h-16 object-contain" />
     </div>
-
-    {/* Python */}
-    <div className="flex flex-col items-center">
-      <img src="/python.png" alt="Python" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Python</span>
+    <div className="flex items-center justify-center">
+      <img src="/python.png" alt="Python" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Java */}
-    <div className="flex flex-col items-center">
-      <img src="/java.png" alt="Java" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Java</span>
+    <div className="flex items-center justify-center">
+      <img src="/java.png" alt="Java" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* JavaScript */}
-    <div className="flex flex-col items-center">
-      <img src="/javascript.png" alt="JavaScript" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">JavaScript</span>
+    <div className="flex items-center justify-center">
+      <img src="/javascript.png" alt="JavaScript" className="w-10 h-10 object-contain" />
     </div>
-
-    {/* React.JS */}
-    <div className="flex flex-col items-center">
-      <img src="/react.png" alt="React.JS" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">React.JS</span>
+    <div className="flex items-center justify-center">
+      <img src="/react.png" alt="React.JS" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* SQL */}
-    <div className="flex flex-col items-center">
-      <img src="/sql.png" alt="SQL" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">SQL</span>
+    <div className="flex items-center justify-center">
+      <img src="/sql.png" alt="SQL" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* MongoDB */}
-    <div className="flex flex-col items-center">
-      <img src="/mongo.png" alt="MongoDB" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">MongoDB</span>
+    <div className="flex items-center justify-center">
+      <img src="/mongo.png" alt="MongoDB" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Git */}
-    <div className="flex flex-col items-center">
-      <img src="/git.png" alt="Git" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Git</span>
+    <div className="flex items-center justify-center">
+      <img src="/git.png" alt="Git" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Bash */}
-    <div className="flex flex-col items-center">
-      <img src="/bash.png" alt="Bash" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Bash</span>
+    <div className="flex items-center justify-center">
+      <img src="/bash.png" alt="Bash" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Excel Macro */}
-    <div className="flex flex-col items-center">
-      <img src="/macro.png" alt="Excel Macro" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Excel Macro</span>
+    <div className="flex items-center justify-center">
+      <img src="/macro.png" alt="Excel Macro" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* HTML */}
-    <div className="flex flex-col items-center">
-      <img src="/html.png" alt="HTML" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">HTML</span>
+    <div className="flex items-center justify-center">
+      <img src="/html.png" alt="HTML" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* CSS */}
-    <div className="flex flex-col items-center">
-      <img src="/css.png" alt="CSS" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">CSS</span>
+    <div className="flex items-center justify-center">
+      <img src="/css.png" alt="CSS" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Lisp */}
-    <div className="flex flex-col items-center">
-      <img src="/lisp.png" alt="Lisp" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Lisp</span>
+    <div className="flex items-center justify-center">
+      <img src="/lisp.png" alt="Lisp" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* OCaml */}
-    <div className="flex flex-col items-center">
-      <img src="/ocaml.png" alt="OCaml" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">OCaml</span>
+    <div className="flex items-center justify-center">
+      <img src="/ocaml.png" alt="OCaml" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* Rust */}
-    <div className="flex flex-col items-center">
-      <img src="/rust.png" alt="Rust" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Rust</span>
+    <div className="flex items-center justify-center">
+      <img src="/rust.png" alt="Rust" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* Prolog */}
-    <div className="flex flex-col items-center">
-      <img src="/prolog.png" alt="Prolog" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Prolog</span>
+    <div className="flex items-center justify-center">
+      <img src="/prolog.png" alt="Prolog" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* Haskell */}
-    <div className="flex flex-col items-center">
-      <img src="/haskell.png" alt="Haskell" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Haskell</span>
+    <div className="flex items-center justify-center">
+      <img src="/haskell.png" alt="Haskell" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Firebase */}
-    <div className="flex flex-col items-center">
-      <img src="/firebase.png" alt="Firebase" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Firebase</span>
+    <div className="flex items-center justify-center">
+      <img src="/firebase.png" alt="Firebase" className="w-14 h-14 object-contain" />
     </div>
-
-    {/* Google Cloud */}
-    <div className="flex flex-col items-center">
-      <img src="/google.png" alt="Google Cloud" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Google Cloud</span>
+    <div className="flex items-center justify-center">
+      <img src="/google.png" alt="Google Cloud" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* Photoshop */}
-    <div className="flex flex-col items-center">
-      <img src="/photoshop.png" alt="Photoshop" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Photoshop</span>
+    <div className="flex items-center justify-center">
+      <img src="/photoshop.png" alt="Photoshop" className="w-12 h-12 object-contain" />
     </div>
-
-    {/* Canva */}
-    <div className="flex flex-col items-center">
-      <img src="/canva.png" alt="Canva" className="w-20 h-20 object-contain mb-2" />
-      <span className="text-lg">Canva</span>
+    <div className="flex items-center justify-center">
+      <img src="/canva.png" alt="Canva" className="w-16 h-16 object-contain" />
     </div>
   </div>
 </section>
-
 
 
       {/* Footer with LinkedIn, GitHub, and CV */}
