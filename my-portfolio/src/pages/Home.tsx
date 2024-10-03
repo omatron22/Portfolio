@@ -4,6 +4,7 @@ import { Icon } from "@iconify-icon/react";
 import ThreeDModelViewer from '../components/ThreeDModelViewer';  // Import the 3D Model Viewer
 import SimpleImageSlider from "react-simple-image-slider"; // Image slider component
 import MySVGComponent from '../components/MySVGComponent';
+import MySVGComponent2 from '../components/MySVGComponent2';
 
 const Home = () => {
   return (
@@ -18,10 +19,11 @@ const Home = () => {
       />
     </div>
 
-    {/* SVG Component - Increased size */}
-    <div className="w-full h-auto flex justify-start items-center mt-4 mb-2">
-      <MySVGComponent className="w-4/5 h-auto ml-auto" />
-    </div>
+{/* SVG Component - Increased size and moved lower */}
+<div className="w-full h-auto flex justify-start items-center mt-8 mb-2">
+  <MySVGComponent className="w-[90%] h-auto ml-auto" />
+</div>
+
 
   </section>
 
@@ -61,34 +63,37 @@ const Home = () => {
   </div>
 </section>
 
+<section className="education bg-base-200 py-10 flex">
+  {/* Bear Model Section (Bigger, higher, and slightly to the right) */}
+  <div className="lg:w-1/2 flex items-center justify-start mt-[-120px] ml-10">  {/* Adjusted top margin and moved right */}
+    <MySVGComponent2 className="w-full h-auto max-w-[400px] max-h-[400px]" />  {/* Bigger, aligned slightly to the right */}
+  </div>
 
-      {/* Education Section */}
-      <section className="education bg-base-200 py-10 flex">
-        <div className="lg:w-1/2 text-left px-10">
-          <h2 className="text-4xl font-semibold mb-6">Education</h2>
-          <div className="card shadow-lg bg-base-300 p-4 mb-6">
-            <h3 className="text-2xl font-bold text-primary">University of California, Los Angeles</h3>
-            <p className="text-lg text-gray-500">(2020-2024)</p>
-            <p className="text-lg">B.A. Linguistics and Computer Science</p>
-            <div className="mt-4 space-y-4">
-              <div className="flex items-center">
-                <Icon icon="mdi:snowflake" className="text-2xl text-primary mr-3" />
-                <p className="text-lg">UCLA Snowteam Athlete</p>
-              </div>
-              <div className="flex items-center">
-                <Icon icon="mdi:account-group" className="text-2xl text-primary mr-3" />
-                <p className="text-lg">
-                  Society of LatinX Engineers Member <em>(Web Developer)</em>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="lg:w-1/2 flex items-center justify-center">
-          <ThreeDModelViewer modelPath="/bear_head/scene.gltf" />
+
+  {/* Education Section (Now on the right) */}
+  <div className="lg:w-1/2 text-left px-10">
+    <h2 className="text-4xl font-semibold mb-6">Education</h2>
+    <div className="card shadow-lg bg-base-300 p-4 mb-6">
+      <h3 className="text-2xl font-bold text-primary">University of California, Los Angeles</h3>
+      <p className="text-lg text-gray-500">(2020-2024)</p>
+      <p className="text-lg">B.A. Linguistics and Computer Science</p>
+      <div className="mt-4 space-y-4">
+        <div className="flex items-center">
+          <Icon icon="mdi:snowflake" className="text-2xl text-primary mr-3" />
+          <p className="text-lg">UCLA Snowteam Athlete</p>
         </div>
-      </section>
+        <div className="flex items-center">
+          <Icon icon="mdi:account-group" className="text-2xl text-primary mr-3" />
+          <p className="text-lg">
+            Society of LatinX Engineers Member <em>(Web Developer)</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Experience Section */}
       <section className="experience bg-base-100 py-10 flex">
