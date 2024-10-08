@@ -45,15 +45,16 @@ const Home = () => {
         width={450}
         height={300}
         images={[
-          { url: "/snowboarding.jpg" },
-          { url: "/guitar.jpg" },
-          { url: "/nature.jpeg" },
-          { url: "/basketball.jpg" }
+          { url: "/one.jpeg" },
+          { url: "/two.jpg" },
+          { url: "/three.jpeg" },
+          { url: "/four.jpg" },
+          { url: "/five.jpeg" }
         ]}
         showBullets={true}
         showNavs={false}
         autoPlay={false}
-        slideDuration={4}
+        slideDuration={5}
         style={{
           borderRadius: '12px',
           clipPath: 'inset(0 round 12px)',
@@ -66,7 +67,6 @@ const Home = () => {
 <section className="education bg-base-200 py-10 flex">
   {/* Bear Model Section (Bigger, higher, and slightly to the right) */}
   <div className="lg:w-1/2 flex items-center justify-start mt-[-120px] ml-10">  {/* Adjusted top margin and moved right */}
-    <MySVGComponent2 className="w-full h-auto max-w-[400px] max-h-[400px]" />  {/* Bigger, aligned slightly to the right */}
   </div>
 
 
@@ -121,7 +121,6 @@ const Home = () => {
         </div>
 
         <div className="lg:w-1/2 flex items-center justify-center">
-        <MySVGComponent className="w-4/5 h-auto ml-auto" />
         </div>
       </section>
 
