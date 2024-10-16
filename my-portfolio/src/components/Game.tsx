@@ -16,11 +16,11 @@ const Game: React.FC<GameProps> = ({ character }) => {
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
       width: 800,
-      height: 600,
+      height: 400,
       physics: {
         default: 'arcade',
         arcade: {
-          gravity: { x: 0, y: 1000 },  // Gravity for jumping
+          gravity: { x: 0, y: 1000 },
           debug: false,
         },
       },
@@ -38,30 +38,30 @@ const Game: React.FC<GameProps> = ({ character }) => {
     let ground: Phaser.Physics.Arcade.StaticGroup;
     let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     let obstacles: Phaser.Physics.Arcade.Group;
-    let score = 0;
-    let scoreText: Phaser.GameObjects.Text;
-    let isGameOver = false;
 
     function preload(this: Phaser.Scene) {
-      this.load.image('ground', 'assets/ground.png');
-      this.load.image('player', 'assets/player.png');
-      this.load.image('obstacle', 'assets/obstacle.png');
+      this.load.image('ground', '/assets/ground.png');
+      this.load.image('player', '/assets/player.png');
+      this.load.image('obstacle', '/assets/obstacle.png');
     }
 
     function create(this: Phaser.Scene) {
-      // Add the ground
+      // Ground setup
       ground = this.physics.add.staticGroup();
-      ground.create(400, 580, 'ground').setScale(2).refreshBody();
+      ground.create(400, 390, 'ground').setScale(2).refreshBody();
 
-      // Create the player character
-      player = this.physics.add.sprite(100, 450, 'player');
-      player.setBounce(0);
+      // Player setup
+      player = this.physics.add.sprite(100, 300, 'player');
+      player.setBounce(0.1);
       player.setCollideWorldBounds(true);
 
-      // Enable collision between player and ground
+      // Collisions between player and ground
       this.physics.add.collider(player, ground);
 
-      // Create obstacle group
+      // Input controls
+      cursors = this.input.keyboard?.createCursorKeys()!;
+
+      // Create obstacles group
       obstacles = this.physics.add.group();
 
       // Set a timer to spawn obstacles periodically
@@ -71,70 +71,45 @@ const Game: React.FC<GameProps> = ({ character }) => {
         callbackScope: this,
         loop: true,
       });
-
-      // Add score display
-      scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', color: '#000' });
-
-      // Input handling for jump and duck
-      cursors = this.input!.keyboard!.createCursorKeys();  // Non-null assertion used
     }
 
     function update(this: Phaser.Scene) {
-      if (isGameOver) {
-        return;
+      if (!player || !cursors) return;
+
+      // Stop player movement by default
+      player.setVelocityX(0);
+
+      // Move left
+      if (cursors.left?.isDown) {
+        player.setVelocityX(-160);
+      }
+      // Move right
+      else if (cursors.right?.isDown) {
+        player.setVelocityX(160);
       }
 
-      // Player auto-run
-      player.setVelocityX(160);
-
-      // Jump when spacebar or up arrow is pressed and player is on the ground
-      if ((cursors.up.isDown || this.input!.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE).isDown) && player.body?.touching.down) {
-        player.setVelocityY(-550);
+      // Jump if touching the ground
+      if ((cursors.up?.isDown || cursors.space?.isDown) && player.body?.touching.down) {
+        player.setVelocityY(-500);
       }
-
-      // Duck when the down arrow is pressed
-      if (cursors.down.isDown) {
-        player.setScale(1, 0.5);  // Shrink the player to "duck"
-      } else {
-        player.setScale(1, 1);
-      }
-
-      // Increment score as time passes
-      score += 1;
-      scoreText.setText('Score: ' + score);
-
-      // Recycle obstacles when they go off screen
-      obstacles.children.iterate((obstacle) => {
-        const sprite = obstacle as Phaser.Physics.Arcade.Sprite;
-        if (sprite.x < -50) {
-          sprite.destroy();
-        }
-        return null;
-      });
     }
 
     function spawnObstacle(this: Phaser.Scene) {
-      // Create a new obstacle at a fixed y-position
-      const obstacle = obstacles.create(800, 520, 'obstacle');
-      obstacle.setVelocityX(-300);
+      const obstacle = obstacles.create(800, 350, 'obstacle') as Phaser.Physics.Arcade.Sprite;
+      obstacle.setVelocityX(-200);
       obstacle.setCollideWorldBounds(false);
+      
+      if (obstacle.body instanceof Phaser.Physics.Arcade.Body) {
+        obstacle.body.setAllowGravity(false);
+      }
 
       // Handle collision between player and obstacle
-      this.physics.add.collider(player as Phaser.Physics.Arcade.Sprite, obstacle as Phaser.Physics.Arcade.Sprite, hitObstacle as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback, undefined, this);
+      this.physics.add.collider(player, obstacle, hitObstacle as Phaser.Types.Physics.Arcade.ArcadePhysicsCallback, undefined, this);
     }
 
     function hitObstacle(this: Phaser.Scene, player: Phaser.Physics.Arcade.Sprite, obstacle: Phaser.Physics.Arcade.Sprite) {
       this.physics.pause();
       player.setTint(0xff0000);
-      isGameOver = true;
-      scoreText.setText('Game Over! Final Score: ' + score);
-
-      // Restart the game after 2 seconds
-      this.time.delayedCall(2000, () => {
-        this.scene.restart();
-        isGameOver = false;
-        score = 0;
-      });
     }
 
     return () => {
