@@ -39,49 +39,67 @@ const Project = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-base-100 to-base-200 py-16 px-6">
-      <div className="max-w-7xl w-full mx-auto columns-2 gap-6">
+      <div
+        className="max-w-7xl w-full mx-auto"
+        style={{
+          columnCount: 2,
+          columnGap: "1.5rem",
+        }}
+      >
         {projects.map((project, index) => (
-          <div key={index} className="break-inside-avoid bg-white shadow-md rounded-md overflow-hidden transform hover:scale-105 transition-transform duration-300 mb-6">
-            <div className="bg-gradient-to-r from-primary to-secondary text-white py-3 px-4 text-center">
-              <h1 className="text-xl font-semibold">{project.title}</h1>
-            </div>
-            <div className="p-4 space-y-3">
-              <div className="flex flex-col text-base space-y-1">
-                <div className="flex items-center space-x-2">
-                  <Icon icon="mdi:briefcase-outline" className="text-secondary" />
-                  <span className="font-medium">{project.company}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Icon icon="mdi:target" className="text-secondary" />
-                  <span>{project.purpose}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Icon icon="mdi:code-tags" className="text-secondary" />
-                  <span>{project.language}</span>
-                </div>
+          <div
+            key={index}
+            className="bg-base-100 border border-base-100 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 mb-6 break-inside-avoid"
+          >
+            {/* Card Header with Title Bar */}
+            <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4 rounded-t-lg">
+              <h1 className="text-lg font-semibold text-base-content">{project.title}</h1>
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                {project.description}
-              </p>
+            </div>
+            {/* Card Content */}
+            <div className="p-4 space-y-2">
+              <div className="flex flex-col text-base space-y-1">
+                {project.company && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:briefcase-outline" className="text-primary" />
+                    <span className="font-medium text-base-content">{project.company}</span>
+                  </div>
+                )}
+                {project.purpose && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:target" className="text-error" />
+                    <span className="text-base-content">{project.purpose}</span>
+                  </div>
+                )}
+                {project.language && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:code-tags" className="text-success" />
+                    <span className="text-base-content">{project.language}</span>
+                  </div>
+                )}
+              </div>
+              {project.description && (
+                <p className="text-sm text-base-content leading-relaxed mt-2">{project.description}</p>
+              )}
               <div className="flex justify-end mt-2">
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-primary transition-transform transform hover:scale-110"
-                >
-                  <Icon icon="mdi:github" className="text-2xl" />
-                </a>
+                {project.githubLink && (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
+                  >
+                    <Icon icon="mdi:github" className="text-2xl" />
+                  </a>
+                )}
               </div>
             </div>
           </div>
         ))}
-        {/* Placeholder for sprout element in the middle */}
-        <div className="flex items-center justify-center w-full">
-          <div className="w-32 h-32">
-            {/* Space for future sprout illustration */}
-          </div>
-        </div>
       </div>
     </div>
   );

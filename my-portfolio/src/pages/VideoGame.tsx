@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
 import Game from '../components/Game';
+import IntroScreen from '../components/IntroScreen';
+import CharacterSelect from '../components/CharacterSelect';
 
 const VideoGame: React.FC = () => {
-  const [isGameStarted, setIsGameStarted] = useState(false);
-  const [selectedCharacter, setSelectedCharacter] = useState('player'); // Default character
+  const [currentScreen, setCurrentScreen] = useState<'intro' | 'characterSelect' | 'game' | 'gameOver'>('intro');
+  const [selectedCharacter, setSelectedCharacter] = useState('player');
 
-  const handleCharacterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCharacter(event.target.value);
+  const handleCharacterSelect = (character: string) => {
+    setSelectedCharacter(character);
+    setCurrentScreen('game');
+  };
+
+  const handleGoToCharacterSelect = () => {
+    setCurrentScreen('characterSelect');
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-200">
-      {!isGameStarted ? (
-        <div className="bg-base-100 rounded-lg shadow-lg p-8 text-center max-w-sm">
-          <h1 className="text-3xl font-bold mb-6 text-primary">Welcome to My 2D Platformer</h1>
-          <label className="block text-lg mb-4 text-secondary">Select Your Character:</label>
-          <select 
-            onChange={handleCharacterChange} 
-            value={selectedCharacter} 
-            className="select select-bordered w-full max-w-xs mb-6"
-          >
-            <option value="player">Player 1</option>
-            <option value="otherCharacter">Player 2</option> {/* Add more characters if needed */}
-          </select>
-          <button 
-            onClick={() => setIsGameStarted(true)} 
-            className="btn btn-primary w-full"
-          >
-            Play
-          </button>
+    <div className="flex items-center justify-center min-h-screen bg-base-100">
+      {currentScreen === 'intro' && (
+        <IntroScreen onPlay={() => setCurrentScreen('characterSelect')} />
+      )}
+
+      {currentScreen === 'characterSelect' && (
+        <CharacterSelect onSelectCharacter={handleCharacterSelect} />
+      )}
+
+      {currentScreen === 'game' && (
+        <div className="w-full h-full animate__animated animate__zoomIn">
+          <Game
+            character={selectedCharacter}
+            onCharacterSelect={handleGoToCharacterSelect} // Pass the handler to Game
+          />
         </div>
-      ) : (
-        <Game character={selectedCharacter} />
       )}
     </div>
   );
