@@ -5,9 +5,10 @@ interface GameOverProps {
   highScore: number;
   handleRestart: () => void;
   onCharacterSelect?: () => void; // Made optional
+  onMainMenu: () => void; // Added prop to navigate to main menu
 }
 
-const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRestart, onCharacterSelect }) => {
+const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRestart, onCharacterSelect, onMainMenu }) => {
   return (
     <div
       style={{
@@ -98,9 +99,7 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
           <img
             src="/assets/home-button.png"
             alt="Main Menu Button"
-            onClick={() => {
-              window.location.reload();
-            }}
+            onClick={onMainMenu} // Use the callback to go back to main menu
             style={{
               width: '80px', // Reduced width to make the button smaller
               height: 'auto',
