@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Phaser from 'phaser';
 import GameOver from './GameOver'; // Importing GameOver component
+import HowToPlay from './HowToPlay'; // Import the HowToPlay component
 
 interface GameProps {
   character: string;
@@ -16,6 +17,11 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect }) => {
   const [gameOver, setGameOver] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isMusicOn, setIsMusicOn] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [showGuide, setShowGuide] = useState(() => {
+    // Show the guide if it hasn't been dismissed before
+    return sessionStorage.getItem('guideShown') !== 'true';
+  });
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState<number>(() => {
     const savedHighScore = localStorage.getItem('highScore');
@@ -40,13 +46,25 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (!gameRef.current) {
-      return;
-    }
-
+  // Function to handle starting the game after the guide
+  const handleStartGame = () => {
     if (gameInstanceRef.current) {
-      return; // Do not recreate the game if it already exists
+      gameInstanceRef.current.destroy(true);
+      gameInstanceRef.current = null;
+    }
+    setShowGuide(false);
+    sessionStorage.setItem('guideShown', 'true');
+    setIsInitialized(false);
+  };
+  
+
+  useEffect(() => {
+    if (!gameRef.current || showGuide || isInitialized) return;
+
+    // Ensure previous game instance is fully destroyed
+    if (gameInstanceRef.current) {
+      gameInstanceRef.current.destroy(true);
+      gameInstanceRef.current = null;
     }
 
     const config: Phaser.Types.Core.GameConfig = {
@@ -92,50 +110,43 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect }) => {
     let isDuckingPrevious = false;
 
     function preload(this: Phaser.Scene) {
-      // Load assets
-      this.load.spritesheet('background', '/assets/background.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.spritesheet('background2', '/assets/background2.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.image('idle', '/assets/idle.png');
-      this.load.spritesheet('moving', '/assets/moving.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.spritesheet('jump', '/assets/jump.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.spritesheet('chocolate', '/assets/choco.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.spritesheet('ball', '/assets/tennis-ball.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.spritesheet('bone', '/assets/bone.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
-      this.load.image('duck_idle', '/assets/duck-idle.png');
-      this.load.spritesheet('duck_moving', '/assets/duck-moving.png', {
-        frameWidth: 1200,
-        frameHeight: 690,
-      });
+      // Determine character prefix based on selected character
+      const characterPrefix = character === 'birthday' ? 'birthday' :
+      character === 'jeans' ? 'jeans' :
+      character === 'og' ? 'og' : '';
+
+      // Load common assets
+      this.load.spritesheet('background', '/assets/background.png', { frameWidth: 1200, frameHeight: 690 });
+      this.load.spritesheet('background2', '/assets/background2.png', { frameWidth: 1200, frameHeight: 690 });
+      this.load.spritesheet('chocolate', '/assets/choco.png', { frameWidth: 1200, frameHeight: 690 });
+      this.load.spritesheet('ball', '/assets/tennis-ball.png', { frameWidth: 1200, frameHeight: 690 });
+      this.load.spritesheet('bone', '/assets/bone.png', { frameWidth: 1200, frameHeight: 690 });
       this.load.audio('jump', '/assets/jump.mp3');
       this.load.audio('backgroundMusic', '/assets/backgroundMusic.mp3');
-      this.load.image('playButton', '/assets/play-button.png');
-      this.load.image('pauseButton', '/assets/pause-button.png');
-      this.load.image('soundOn', '/assets/sound-on.png');
-      this.load.image('soundOff', '/assets/sound-off.png');
+    
+      // Load character-specific assets
+      this.load.image(`${characterPrefix}idle`, `/assets/${characterPrefix}-idle.png`);
+      this.load.spritesheet(`${characterPrefix}moving`, `/assets/${characterPrefix}-moving.png`, {
+        frameWidth: 1200,
+        frameHeight: 690,
+      });
+      this.load.spritesheet(`${characterPrefix}jump`, `/assets/${characterPrefix}-jump.png`, {
+        frameWidth: 1200,
+        frameHeight: 690,
+      });
+      this.load.image(`${characterPrefix}duck_idle`, `/assets/${characterPrefix}-duck-idle.png`);
+      this.load.spritesheet(`${characterPrefix}duck_moving`, `/assets/${characterPrefix}-duck-moving.png`, {
+        frameWidth: 1200,
+        frameHeight: 690,
+      });
     }
+    
 
     function create(this: Phaser.Scene) {
+      const characterPrefix = character === 'birthday' ? 'birthday' :
+      character === 'jeans' ? 'jeans' :
+      character === 'og' ? 'og' : '';
+
       score = 0;
       setCurrentScore(0);
 
@@ -165,38 +176,28 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect }) => {
         backgroundMusic.play();
       }
 
-      // Define animations
-      this.anims.create({
-        key: 'idle_animation',
-        frames: [{ key: 'idle' }],
-        frameRate: 1,
-        repeat: -1,
-      });
+      this.anims.create({ key: `${characterPrefix}idle_animation`, frames: [{ key: `${characterPrefix}idle` }], frameRate: 1, repeat: -1 });
+
+      this.anims.create({ key: `${characterPrefix}duck_idle_animation`, frames: [{ key: `${characterPrefix}duck_idle` }], frameRate: 1, repeat: -1 });
+
 
       this.anims.create({
-        key: 'duck_idle_animation',
-        frames: [{ key: 'duck_idle' }],
-        frameRate: 1,
-        repeat: -1,
-      });
-
-      this.anims.create({
-        key: 'moving_animation',
-        frames: this.anims.generateFrameNumbers('moving', { start: 0, end: 7 }),
+        key: `${characterPrefix}moving_animation`,
+        frames: this.anims.generateFrameNumbers(`${characterPrefix}moving`, { start: 0, end: 7 }),
         frameRate: 5,
         repeat: -1,
       });
 
       this.anims.create({
-        key: 'jump_animation',
-        frames: this.anims.generateFrameNumbers('jump', { start: 0, end: 2 }),
+        key: `${characterPrefix}jump_animation`,
+        frames: this.anims.generateFrameNumbers(`${characterPrefix}jump`, { start: 0, end: 2 }),
         frameRate: 3,
         repeat: 0,
       });
 
       this.anims.create({
-        key: 'duck_moving_animation',
-        frames: this.anims.generateFrameNumbers('duck_moving', { start: 0, end: 1 }),
+        key: `${characterPrefix}duck_moving_animation`,
+        frames: this.anims.generateFrameNumbers(`${characterPrefix}duck_moving`, { start: 0, end: 1 }),
         frameRate: 5,
         repeat: -1,
       });
@@ -226,12 +227,12 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect }) => {
       this.physics.world.setBounds(0, 0, 1200, groundHeightLevel);
 
       // Create the player sprite and start with idle animation
-      player = this.physics.add.sprite(150, groundHeightLevel - 50, 'idle');
+      player = this.physics.add.sprite(150, groundHeightLevel - 50, `${characterPrefix}idle`);
       player.setBounce(0.1).setCollideWorldBounds(true);
       player.setScale(scaleFactor);
       player.setOrigin(0.5, 1);
       (player.body as Phaser.Physics.Arcade.Body).setSize(hitboxWidth, hitboxHeight);
-      player.anims.play('idle_animation');
+      player.anims.play(`${characterPrefix}idle_animation`);
 
       // Input handling for player movement
       cursors = this.input.keyboard?.createCursorKeys() ?? null;
@@ -320,6 +321,10 @@ scoreText = this.add.text(16, 16, '0', {
         return;
       }
       if (!player || !cursors) return;
+    
+      const characterPrefix = character === 'birthday' ? 'birthday' :
+      character === 'jeans' ? 'jeans' :
+      character === 'og' ? 'og' : '';
 
       player.setVelocityX(0);
       const isOnGround = player.body?.blocked.down;
@@ -327,16 +332,18 @@ scoreText = this.add.text(16, 16, '0', {
       const isLeftPressed = cursors.left?.isDown;
       const isRightPressed = cursors.right?.isDown;
       const isUpPressed = cursors.up?.isDown;
-
+    
       let isDucking = false;
       let isMoving = false;
-
+    
+      // Jump logic
       if (isUpPressed && isOnGround) {
         player.setVelocityY(-600);
         this.sound.play('jump');
-        player.anims.play('jump_animation', true);
+        player.anims.play(`${characterPrefix}jump_animation`, true);
       }
-
+    
+      // Movement logic
       if (isLeftPressed) {
         player.setVelocityX(-200);
         isMoving = true;
@@ -344,11 +351,13 @@ scoreText = this.add.text(16, 16, '0', {
         player.setVelocityX(200);
         isMoving = true;
       }
-
+    
+      // Ducking logic
       if (isDownPressed && isOnGround) {
         isDucking = true;
       }
-
+    
+      // Adjust the hitbox size when ducking
       const body = player.body as Phaser.Physics.Arcade.Body;
       if (isDucking && !isDuckingPrevious) {
         const deltaHeight = (hitboxHeight - duckHitboxHeight) * scaleFactor;
@@ -361,54 +370,58 @@ scoreText = this.add.text(16, 16, '0', {
         player.y -= deltaHeight / 2;
         isDuckingPrevious = false;
       }
-
+    
+      // Animation logic
       if (isDucking && isMoving) {
-        if (player.anims.currentAnim?.key !== 'duck_moving_animation') {
-          player.anims.play('duck_moving_animation', true);
+        if (player.anims.currentAnim?.key !== `${characterPrefix}duck_moving_animation`) {
+          player.anims.play(`${characterPrefix}duck_moving_animation`, true);
         }
       } else if (isDucking) {
-        if (player.anims.currentAnim?.key !== 'duck_idle_animation') {
-          player.anims.play('duck_idle_animation', true);
+        if (player.anims.currentAnim?.key !== `${characterPrefix}duck_idle_animation`) {
+          player.anims.play(`${characterPrefix}duck_idle_animation`, true);
         }
       } else if (isMoving) {
         if (
-          player.anims.currentAnim?.key !== 'moving_animation' &&
-          player.anims.currentAnim?.key !== 'jump_animation'
+          player.anims.currentAnim?.key !== `${characterPrefix}moving_animation` &&
+          player.anims.currentAnim?.key !== `${characterPrefix}jump_animation`
         ) {
-          player.anims.play('moving_animation', true);
+          player.anims.play(`${characterPrefix}moving_animation`, true);
         }
       } else {
         if (
-          player.anims.currentAnim?.key !== 'idle_animation' &&
-          player.anims.currentAnim?.key !== 'jump_animation'
+          player.anims.currentAnim?.key !== `${characterPrefix}idle_animation` &&
+          player.anims.currentAnim?.key !== `${characterPrefix}jump_animation`
         ) {
-          player.anims.play('idle_animation', true);
+          player.anims.play(`${characterPrefix}idle_animation`, true);
         }
       }
-
+    
+      // Reset to idle or moving animation after jump animation finishes
       if (
         isOnGround &&
-        player.anims.currentAnim?.key === 'jump_animation' &&
+        player.anims.currentAnim?.key === `${characterPrefix}jump_animation` &&
         !player.anims.isPlaying
       ) {
         if (isMoving) {
-          player.anims.play('moving_animation', true);
+          player.anims.play(`${characterPrefix}moving_animation`, true);
         } else {
-          player.anims.play('idle_animation', true);
+          player.anims.play(`${characterPrefix}idle_animation`, true);
         }
       }
-
+    
+      // Cleanup obstacles
       obstacles.children.iterate((obstacle: Phaser.GameObjects.GameObject) => {
         const obs = obstacle as Phaser.Physics.Arcade.Sprite;
-
+    
         if (obs.body && (obs.x < -50 || !obs.body.enable)) {
           obstacles.killAndHide(obs);
           obs.body.enable = false;
         }
-
+    
         return true;
       });
     }
+    
 
     return () => {
       gameInstanceRef.current?.destroy(true);
@@ -466,57 +479,56 @@ scoreText = this.add.text(16, 16, '0', {
         backgroundColor: 'transparent',
       }}
     >
-      <div ref={gameRef} style={{ width: '100%', height: '100%' }}></div>
-      <div
-  style={{
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    zIndex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: '15px', // Increased gap for better spacing
-    padding: '0',
-  }}
->
-  <img
-    src={isMusicOn ? '/assets/sound-on.png' : '/assets/sound-off.png'}
-    onClick={toggleMusic}
-    alt={isMusicOn ? 'Sound On' : 'Sound Off'}
-    style={{
-      cursor: 'pointer',
-      width: '50px', // Increased size
-      height: '50px', // Increased size
-      objectFit: 'contain',
-      marginRight: '30px', // Move the sound icon more to the left
-    }}
-  />
-  <img
-    src={isPaused ? '/assets/play-button.png' : '/assets/pause-button.png'}
-    onClick={togglePause}
-    alt={isPaused ? 'Play' : 'Pause'}
-    style={{
-      cursor: 'pointer',
-      width: '50px', // Increased size
-      height: '50px', // Increased size
-      objectFit: 'contain',
-      margin: '0',
-    }}
-  />
-</div>
-
-
-      {gameOver && (
-        <GameOver
-          currentScore={currentScore}
-          highScore={highScore}
-          handleRestart={handleRestart}
-          onCharacterSelect={onCharacterSelect} // Pass the handler to GameOver
-        />
+      {/* Show the HowToPlay screen before starting the game */}
+      {showGuide ? (
+        <HowToPlay onClose={handleStartGame} />
+      ) : (
+        <>
+          {/* Top-right control buttons */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '10px',
+              right: '10px',
+              zIndex: 2,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '15px',
+            }}
+          >
+            <img
+              src={isMusicOn ? '/assets/sound-on.png' : '/assets/sound-off.png'}
+              onClick={toggleMusic}
+              alt={isMusicOn ? 'Sound On' : 'Sound Off'}
+              style={{ cursor: 'pointer', width: '50px', height: '50px' }}
+            />
+            <img
+              src={isPaused ? '/assets/play-button.png' : '/assets/pause-button.png'}
+              onClick={togglePause}
+              alt={isPaused ? 'Play' : 'Pause'}
+              style={{ cursor: 'pointer', width: '50px', height: '50px' }}
+            />
+          </div>
+  
+          {/* Game container (only rendered after guide is dismissed) */}
+          <div ref={gameRef} style={{ width: '100%', height: '100%' }}></div>
+  
+          {/* Game Over screen */}
+          {gameOver && (
+            <GameOver
+              currentScore={currentScore}
+              highScore={highScore}
+              handleRestart={handleRestart}
+              onCharacterSelect={onCharacterSelect}
+            />
+          )}
+        </>
       )}
     </div>
   );
+  
+  
 };
 
 export default Game;
