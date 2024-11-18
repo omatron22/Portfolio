@@ -8,7 +8,13 @@ interface GameOverProps {
   onMainMenu: () => void; // Added prop to navigate to main menu
 }
 
-const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRestart, onCharacterSelect, onMainMenu }) => {
+const GameOver: React.FC<GameOverProps> = ({
+  currentScore,
+  highScore,
+  handleRestart,
+  onCharacterSelect,
+  onMainMenu,
+}) => {
   return (
     <div
       style={{
@@ -34,37 +40,41 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
           src="/assets/gameover-menu.png"
           alt="Game Over Menu"
           style={{
-            width: '500px', // Adjust width and height accordingly
+            width: '333px', // Adjusted from 500px
             height: 'auto',
           }}
         />
-        
+
         {/* High Score and Current Score */}
         <div
           style={{
             position: 'absolute',
-            top: '56%', // Lowered the position to move both scores slightly lower
-            left: '64%', // Keeps scores to the right
+            top: '56%', // Positions in percentages can remain the same
+            left: '64%',
             transform: 'translate(-50%, -50%)',
             textAlign: 'left',
           }}
         >
-          <p style={{ 
-            fontSize: '1.5rem', 
-            margin: '0 0 10px 0', 
-            color: '#dc78fb', 
-            fontFamily: 'VT323, monospace', 
-            textShadow: '-1px 1px #000'  // Shadow on the bottom-left side
-          }}>
+          <p
+            style={{
+              fontSize: '1rem', // Adjusted from 1.5rem
+              margin: '0 0 6.67px 0', // Adjusted from 10px
+              color: '#dc78fb',
+              fontFamily: 'VT323, monospace',
+              textShadow: '-1px 1px #000', // Shadow on the bottom-left side
+            }}
+          >
             : {highScore}
           </p>
-          <p style={{ 
-            fontSize: '1.5rem', 
-            margin: '20px 0 0 0', 
-            color: '#dc78fb', 
-            fontFamily: 'VT323, monospace', 
-            textShadow: '-1px 1px #000'  // Shadow on the bottom-left side
-          }}>
+          <p
+            style={{
+              fontSize: '1rem', // Adjusted from 1.5rem
+              margin: '13.33px 0 0 0', // Adjusted from 20px
+              color: '#dc78fb',
+              fontFamily: 'VT323, monospace',
+              textShadow: '-1px 1px #000', // Shadow on the bottom-left side
+            }}
+          >
             : {currentScore}
           </p>
         </div>
@@ -73,12 +83,12 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
         <div
           style={{
             position: 'absolute',
-            top: '82.5%', // Adjust this to move the buttons container higher or lower
+            top: '82.5%', // Positions in percentages can remain the same
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             justifyContent: 'center',
-            gap: '60px', // Gap between the buttons
+            gap: '40px', // Adjusted from 60px
           }}
         >
           {/* Restart Button */}
@@ -87,13 +97,17 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
             alt="Restart Button"
             onClick={handleRestart}
             style={{
-              width: '80px', // Reduced width to make the button smaller
+              width: '53px', // Adjusted from 80px
               height: 'auto',
               cursor: 'pointer',
               transition: 'transform 0.2s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.1)')
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = 'scale(1)')
+            }
           />
           {/* Main Menu Button */}
           <img
@@ -101,13 +115,17 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
             alt="Main Menu Button"
             onClick={onMainMenu} // Use the callback to go back to main menu
             style={{
-              width: '80px', // Reduced width to make the button smaller
+              width: '53px', // Adjusted from 80px
               height: 'auto',
               cursor: 'pointer',
               transition: 'transform 0.2s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.1)')
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = 'scale(1)')
+            }
           />
           {/* Paw Button to Go to Character Select */}
           {onCharacterSelect && (
@@ -116,13 +134,17 @@ const GameOver: React.FC<GameOverProps> = ({ currentScore, highScore, handleRest
               alt="Paw Button"
               onClick={onCharacterSelect}
               style={{
-                width: '80px', // Adjust width accordingly
+                width: '53px', // Adjusted from 80px
                 height: 'auto',
                 cursor: 'pointer',
                 transition: 'transform 0.2s',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = 'scale(1.1)')
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = 'scale(1)')
+              }
             />
           )}
         </div>

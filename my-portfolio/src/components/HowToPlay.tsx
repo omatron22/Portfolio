@@ -13,36 +13,38 @@ const HowToPlay: React.FC<HowToPlayProps> = ({ onClose }) => {
         left: '0',
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        color: '#fff',
+        backgroundImage: 'url(/assets/howtoplay.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 3,
       }}
     >
-      <h2>How to Play</h2>
-      <p>Use the arrow keys to control your character:</p>
-      <ul>
-        <li>Up Arrow: Jump</li>
-        <li>Down Arrow: Duck</li>
-        <li>Left/Right Arrows: Move left/right</li>
-      </ul>
       <button
         onClick={onClose}
         style={{
-          marginTop: '20px',
-          padding: '10px 20px',
-          backgroundColor: '#007bff',
-          color: '#fff',
+          position: 'absolute',
+          bottom: '6.67px', // Adjusted from 10px
+          right: '33px', // Adjusted from 50px
+          width: '233px', // Adjusted from 350px
+          height: '93px', // Adjusted from 140px
+          backgroundImage: 'url(/assets/startgame.png)',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
           border: 'none',
-          borderRadius: '5px',
           cursor: 'pointer',
+          transition: 'transform 0.3s ease',
         }}
-      >
-        Start Game
-      </button>
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.transform = 'scale(1.1)')
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.transform = 'scale(1)')
+        }
+      />
     </div>
   );
 };
