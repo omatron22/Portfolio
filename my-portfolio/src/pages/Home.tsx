@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TypingAnimation from "../components/TypingAnimation";
 import { Icon } from "@iconify-icon/react";
 import SimpleImageSlider from "react-simple-image-slider"; // Image slider component
@@ -6,17 +6,37 @@ import MySVGComponent from '../components/MySVGComponent';
 import MySVGComponent2 from '../components/MySVGComponent2';
 
 const Home = () => {
+
+  const aboutSectionRef = useRef<HTMLDivElement | null>(null);
+
+  const handleHeroClick = () => {
+    if (aboutSectionRef.current) {
+      const aboutSectionTop = aboutSectionRef.current.getBoundingClientRect().top + window.scrollY;
+      console.log("Scrolling to:", aboutSectionTop);
+      window.scrollTo({
+        top: aboutSectionTop,
+        behavior: "smooth",
+      });
+    }
+  };
+  
+  
+
   return (
     <div className="min-h-screen bg-base-100 text-base-content">
-      {/* Hero Section */}
-      <section className="relative flex flex-col justify-start items-center p-0 m-0 overflow-hidden h-auto">
-        {/* Typing Animation - Top Center */}
-        <div className="z-10 text-center absolute top-10 w-full">
-          <TypingAnimation texts={["Hey, I'm Omar!"]} speed={200} />
-        </div>
 
-{/* SVG Component - Increased size and moved lower */}
-<div className="w-full h-auto flex justify-start items-center mt-8 mb-2 transform transition-transform duration-300 hover:scale-105">
+{/* Hero Section */}
+<section className="relative flex flex-col justify-start items-center p-0 m-0 overflow-hidden h-auto">
+  {/* Typing Animation - Top Center */}
+  <div className="z-10 text-center absolute top-10 w-full">
+    <TypingAnimation texts={["Hey, I'm Omar!"]} speed={200} />
+  </div>
+
+  {/* Clickable SVG Wrapper */}
+  <div
+  className="w-full h-auto flex justify-start items-center mt-8 mb-2 transform transition-transform duration-300 hover:scale-105 cursor-pointer z-30"
+  onClick={handleHeroClick}
+>
   <MySVGComponent className="w-[90%] h-auto ml-auto" />
 </div>
 
@@ -26,11 +46,11 @@ const Home = () => {
           <div className="relative w-full h-auto">
 
 {/* About Section */}
-<section className="relative about bg-base-200 py-10 flex">
-  <div className="lg:w-1/2 text-left px-10 z-20">
+<section ref={aboutSectionRef} className="relative about bg-base-200 py-10 flex">
+<div className="lg:w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-      {/* Header Tab as Window Title Bar */}
+    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
+    {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">About Me</h2>
         <div className="flex space-x-2">
@@ -49,7 +69,7 @@ const Home = () => {
   </div>
   <div className="lg:w-1/2 flex items-center justify-center z-10">
 {/* Image Slider Section */}
-<div className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 lg:ml-40" style={{ width: '450px', height: '300px' }}>
+<div className="rounded-xl overflow-hidden shadow-lg lg:ml-40" style={{ width: '450px', height: '300px' }}>
   <SimpleImageSlider
     width={450}
     height={300}
@@ -79,7 +99,7 @@ const Home = () => {
   </div>
   <div className="lg:w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">Education</h2>
@@ -91,17 +111,44 @@ const Home = () => {
       </div>
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-lg">University of California, Los Angeles</h3>
+        <h3 className="text-2xl font-bold text-lg">
+          <a
+            href="https://www.ucla.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-info transition-colors duration-300"
+          >
+            University of California, Los Angeles
+          </a>
+        </h3>
         <p className="text-lg text-secondary">(2020-2024)</p>
         <p className="text-lg">B.A. Linguistics and Computer Science</p>
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:snowflake" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">UCLA Snowteam Athlete</p>
+            <p className="text-lg">
+              <a
+                href="https://uclaclubsports.com/sports/mens-skiing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-info transition-colors duration-300"
+              >
+                UCLA Snowteam Athlete
+              </a>
+            </p>
           </div>
           <div className="flex items-center">
             <Icon icon="mdi:account-group" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">Society of LatinX Engineers Member <em>(Web Developer)</em></p>
+            <p className="text-lg">
+              <a
+                href="https://uclasoles.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-info transition-colors duration-300"
+              >
+                Society of LatinX Engineers Member <em>(Web Developer)</em>
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -109,11 +156,12 @@ const Home = () => {
   </div>
 </section>
 
+
 {/* Experience Section */}
 <section className="relative experience bg-base-100 py-10 flex">
   <div className="lg:w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">Experience</h2>
@@ -125,9 +173,28 @@ const Home = () => {
       </div>
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-lg">Experior Laboratories</h3>
+        <h3 className="text-2xl font-bold text-lg">
+          <a
+            href="https://experiorlabs.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-info transition-colors duration-300"
+          >
+            Experior Laboratories
+          </a>
+        </h3>
         <p className="text-lg text-secondary">Programming Intern (Summer 2023)</p>
-        <p>Developed shortcuts for the LabVIEW software using C, SQLite, and other technologies.</p>
+        <p>
+          Developed shortcuts for the LabVIEW software using C, SQLite, and other technologies. Learn more about the project 
+          <a
+            href="https://github.com/omatron22/GPIB-to-SQL-DLL"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-info hover:underline ml-1"
+          >
+            here.
+          </a>
+        </p>
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:tools" className="text-2xl text-base-400 mr-3" />
@@ -151,6 +218,7 @@ const Home = () => {
 </section>
 
 
+
             {/* SVG Background */}
             <div className="absolute w-full h-full z-10 pointer-events-none" style={{ top: '300px', transform: 'scale(1.5)', left: '285px' }}>
               <MySVGComponent2 className="w-full h-full" />
@@ -163,35 +231,35 @@ const Home = () => {
 <section className="skills bg-base-100 py-16 px-8">
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
     {/* Skills */}
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Frontend Development</span>
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
+    <span className="text-xl font-semibold text-lg">Frontend Development</span>
       <p className="text-base text-lg">HTML, CSS, JavaScript, React</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Backend Development</span>
       <p className="text-base text-lg">Node.js, Express, SQL, MongoDB</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">UI/UX Design</span>
       <p className="text-base text-lg">Figma, Adobe XD, Adobe Photoshop</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Database Management</span>
       <p className="text-base text-lg">MySQL, PostgreSQL, Firebase</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Version Control</span>
       <p className="text-base text-lg">Git, GitHub</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Cloud Services</span>
       <p className="text-base text-lg">Google Cloud</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Automation</span>
       <p className="text-base text-lg">Excel Macros, Python Scripting</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center space-y-3">
+    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">DevOps</span>
       <p className="text-base text-lg">Docker, CI/CD</p>
     </div>

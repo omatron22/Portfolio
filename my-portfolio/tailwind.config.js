@@ -14,8 +14,7 @@ module.exports = {
       "corporate",
       "dracula",
       "retro",
-      "aqua",
-      "cyberpunk"
+      "aqua"
     ],
   },
 };

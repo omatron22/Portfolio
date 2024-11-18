@@ -35,9 +35,8 @@ export default function AppBar() {
   const themeIcons: Record<string, string> = {
     corporate: "mdi:weather-sunny",   
     dracula: "mdi:weather-night",    
-    retro: "mdi:cassette",    
-    aqua: "mdi:waves",            
-    cyberpunk: "mdi:bee"          
+    retro: "mdi:vinyl",    
+    aqua: "mdi:waves"            
   };
 
   return (

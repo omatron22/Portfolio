@@ -48,7 +48,7 @@ const VideoGame: React.FC = () => {
       <section className="py-16 bg-gradient-to-b from-base-200 to-base-300">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-4xl font-extrabold text-base-content mb-6">Dedicated to My Best Friend</h2>
-          <p className="text-xl text-base-content mb-12">In loving memory of someone very important to me who was taken too soon, rest in peace Samson I will always miss you.</p>
+          <p className="text-xl text-base-content mb-12">In loving memory of someone very important to me. Rest in peace Samson.</p>
           <div className="flex flex-wrap justify-center gap-6">
             {[
               { src: '/assets/mybestfriend.JPG', alt: 'My Best Friend 1', style: { transform: 'rotate(-3deg)' } },
