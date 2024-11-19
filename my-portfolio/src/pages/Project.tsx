@@ -1,8 +1,24 @@
 import React from "react";
 import { Icon } from "@iconify-icon/react";
+import { useNavigate } from "react-router-dom";
 
 const Project = () => {
+  const navigate = useNavigate(); // Initialize navigate
+
   const projects = [
+
+    {
+      title: "Personal Portfolio Website",
+      company: "Personal Project",
+      purpose: "Showcase skills, projects, and personality through a custom-built interactive experience",
+      language: "TypeScript, React, Tailwind CSS, DaisyUI",
+      description: `Built a custom portfolio website using React and TypeScript, designed to create a visually engaging and interactive experience. 
+      The entire site features hand-drawn SVG designs, created from scratch with Illustrator and Photoshop, giving it a distinctive, personal style.
+      The colors dynamically adapt using DaisyUI theme switching, creating a seamless visual experience across different themes.
+      The site also includes a typewriter text animation, an image slider, and smooth scrolling for responsive navigation.
+      An integrated 2D platformer game, created with React and Phaser, adds an interactive element, featuring original animations, dynamic character selection, and custom music composed and recorded for a unique touch.`,
+      githubLink: "https://github.com/omatron22/Portfolio",
+    },
     {
       title: "GPIB to SQL DLL Automation",
       company: "Experior Laboratories",
@@ -12,23 +28,19 @@ const Project = () => {
       githubLink: "https://github.com/omatron22/GPIB-to-SQL-DLL",
     },
     {
-      title: "Placeholder Project 1",
-      company: "Placeholder Company",
-      purpose: "Placeholder purpose for the project",
-      language: "JavaScript, React",
-      description: `This is a placeholder project description to represent a potential future project. It includes a brief overview of the technologies used and the problem it solves.`,
-      githubLink: "#",
+      title: "Samson The Game: A 2D Platformer",
+      company: "Personal Project",
+      purpose: "Create a unique 2D platformer from scratch, combining animations, gameplay, and my own music",
+      language: "JavaScript, TypeScript, React, Phaser",
+      description: `Created a custom 2D platformer using React and Phaser, inspired by classic 8-bit games. 
+      Designed frame-by-frame animations for characters and backgrounds, all drawn with sprite sheets using Piskel, Illustrator, and Photoshop.
+      The game features obstacle generation, collision detection, and a scoring system.
+      You can choose between different characters, each with its own design.
+      The background music and sound effects are original, recorded and mixed by me.`,
+      githubLink: "https://github.com/omatron22/Portfolio",
     },
     {
-      title: "Placeholder Project 2",
-      company: "Placeholder Company",
-      purpose: "Placeholder purpose for the project",
-      language: "Python, Django",
-      description: `This is a placeholder project description to represent a potential future project. It includes a brief overview of the technologies used and the problem it solves.`,
-      githubLink: "#",
-    },
-    {
-      title: "Placeholder Project 3",
+      title: "Placeholder Project 4",
       company: "Placeholder Company",
       purpose: "Placeholder purpose for the project",
       language: "Java, Spring Boot",
@@ -85,7 +97,32 @@ const Project = () => {
               {project.description && (
                 <p className="text-sm text-base-content leading-relaxed mt-2">{project.description}</p>
               )}
-              <div className="flex justify-end mt-2">
+              <div className="flex justify-end mt-2 space-x-4">
+                {/* Dog Icon for Video Game */}
+                {project.title === "Samson The Game: A 2D Platformer" && (
+                  <button
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      navigate("/video-game");
+                    }}
+                    className="text-base-content hover:text-success transition-transform transform hover:scale-110 cursor-pointer"
+                  >
+                    <Icon icon="mdi:dog" className="text-2xl" />
+                  </button>
+                )}
+                {/* Home Icon for Portfolio Website */}
+                {project.title === "Personal Portfolio Website" && (
+                  <button
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      navigate("/");
+                    }}
+                    className="text-base-content hover:text-info transition-transform transform hover:scale-110 cursor-pointer"
+                  >
+                    <Icon icon="mdi:home" className="text-2xl" />
+                  </button>
+                )}
+                {/* GitHub Icon */}
                 {project.githubLink && (
                   <a
                     href={project.githubLink}
