@@ -11,8 +11,6 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.108",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
     "axios": "^1.7.7",
     "daisyui": "^4.12.14",
     "nth-check": "^2.1.1",
@@ -58,7 +56,10 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.24.7",
     "@svgr/webpack": "^8.1.0",
-    "@types/axios": "^0.14.0"
+    "@types/axios": "^0.14.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/react-router-dom": "^5.3.3"
   },
   "resolutions": {
     "nth-check": "2.0.1",
