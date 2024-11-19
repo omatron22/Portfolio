@@ -54,9 +54,6 @@ const Home = () => {
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">About Me</h2>
         <div className="flex space-x-2">
-          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
       </div>
       {/* Card Content */}
@@ -104,9 +101,6 @@ const Home = () => {
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">Education</h2>
         <div className="flex space-x-2">
-          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
       </div>
       {/* Card Content */}
@@ -166,9 +160,6 @@ const Home = () => {
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">Experience</h2>
         <div className="flex space-x-2">
-          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
       </div>
       {/* Card Content */}

@@ -87,9 +87,6 @@ const Project = () => {
             <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4 rounded-t-lg">
               <h1 className="text-lg font-semibold text-base-content">{project.title}</h1>
               <div className="flex space-x-2">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
             </div>
             {/* Card Content */}
