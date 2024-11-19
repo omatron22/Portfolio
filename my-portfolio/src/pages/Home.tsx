@@ -271,12 +271,12 @@ const Home = () => {
 <section className="tech-stack bg-base-200 py-10">
   <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-4 w-full px-6">
     {/* Icon List */}
-    {[{ src: "/c:c++.png", alt: "C/C++", width: "w-16", height: "h-16" },
+    {[{ src: "/c:c++.png", alt: "C/C++", width: "w-24", height: "h-24" },
       { src: "/python.png", alt: "Python", width: "w-14", height: "h-14" },
       { src: "/java.png", alt: "Java", width: "w-14", height: "h-14" },
       { src: "/javascript.png", alt: "JavaScript", width: "w-14", height: "h-14" },
       { src: "/logo192.png", alt: "React.JS", width: "w-14", height: "h-14" },
-      { src: "/sql.png", alt: "SQL", width: "w-14", height: "h-14" },
+      { src: "/SQL.png", alt: "SQL", width: "w-14", height: "h-14" },
       { src: "/mongo.png", alt: "MongoDB", width: "w-14", height: "h-14" },
       { src: "/git.png", alt: "Git", width: "w-14", height: "h-14" },
       { src: "/bash.png", alt: "Bash", width: "w-14", height: "h-14" },

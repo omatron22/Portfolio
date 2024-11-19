@@ -6,7 +6,6 @@ const Project = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   const projects = [
-
     {
       title: "Personal Portfolio Website",
       company: "Personal Project",
@@ -21,7 +20,16 @@ const Project = () => {
     },
     {
       title: "GPIB to SQL DLL Automation",
-      company: "Experior Laboratories",
+      company: (
+        <a
+          href="https://experiorlabs.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-primary transition-colors"
+        >
+          Experior Laboratories
+        </a>
+      ),
       purpose: "Automate data extraction from VISA machines and streamline SQL database integration",
       language: "C, LabVIEW (DLL integration)",
       description: `Developed a solution to automate the process of extracting data from VISA machines, which previously required manual effort and separate LabVIEW algorithms for each machine. The C code communicated with machines to retrieve measurement data, automatically adding it to an SQL database by either updating an existing entry or creating a new one. The code was converted into a DLL for integration with LabVIEW, allowing for easy replication and significantly improving efficiency.`,
@@ -40,12 +48,24 @@ const Project = () => {
       githubLink: "https://github.com/omatron22/Portfolio",
     },
     {
-      title: "Placeholder Project 4",
-      company: "Placeholder Company",
-      purpose: "Placeholder purpose for the project",
-      language: "Java, Spring Boot",
-      description: `This is a placeholder project description to represent a potential future project. It includes a brief overview of the technologies used and the problem it solves.`,
-      githubLink: "#",
+      title: "BeanPod",
+      company: (
+        <a
+          href="https://web.cs.ucla.edu/classes/fall23/cs35L/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-primary transition-colors"
+        >
+          35-L: Software Construction Course
+        </a>
+      ),
+      purpose: "Create a messaging app prototype tailored for student communication needs",
+      language: "React, Firebase, Git",
+      description: `BeanPod is a prototype of a private messaging app developed as a group project for a software construction course. 
+      It features a dynamic and responsive UI built with React, designed with student communication in mind. 
+      The backend leverages Firebase for real-time database management, enabling instant message syncing and secure Google sign-in authentication. 
+      Key features include streamlined Google Authentication, real-time chat functionality, image sharing, a comprehensive chat history feature, and a user-friendly dark mode toggle.`,
+      githubLink: "#", // Add your GitHub link here if available
     },
   ];
 
@@ -61,7 +81,7 @@ const Project = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-base-100 border border-base-100 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 mb-6 break-inside-avoid"
+            className="bg-base-100 rounded-lg shadow-md mb-6 break-inside-avoid"
           >
             {/* Card Header with Title Bar */}
             <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4 rounded-t-lg">
