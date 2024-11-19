@@ -75,7 +75,7 @@ const Home = () => {
     height={300}
     images={[
       { url: "/two.jpeg" },
-      { url: "/one.jpg" },
+      { url: "/one.JPG" },
       { url: "/three.jpeg" }
     ]}
     showBullets={false}
