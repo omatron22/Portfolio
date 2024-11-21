@@ -160,6 +160,7 @@ const Home = () => {
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
         <h2 className="text-lg font-semibold">Experience</h2>
         <div className="flex space-x-2">
+
         </div>
       </div>
       {/* Card Content */}
