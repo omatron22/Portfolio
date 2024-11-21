@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom scaling classes */
+@layer utilities {
+  .scale-container {
+    @apply transform origin-top-left scale-100;
+  }
+
+  @screen lg {
+    .scale-container {
+      @apply scale-75;
+    }
+  }
+
+  @screen md {
+    .scale-container {
+      @apply scale-60;
+    }
+  }
+
+  @screen sm {
+    .scale-container {
+      @apply scale-50;
+    }
+  }
+}

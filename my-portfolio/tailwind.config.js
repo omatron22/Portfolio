@@ -5,16 +5,22 @@ module.exports = {
     './public/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      scale: {
+        '50': '0.5',
+        '60': '0.6',
+        '75': '0.75',
+        '100': '1',
+      },
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: 
-    [
-      "corporate",
-      "dracula",
-      "retro",
-      "aqua"
+    themes: [
+      'corporate',
+      'dracula',
+      'retro',
+      'aqua',
     ],
   },
 };
