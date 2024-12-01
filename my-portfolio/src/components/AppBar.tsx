@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify-icon/react";
-import { Link } from "react-router-dom"; // Importing Link from react-router-dom
+import { Link } from "react-router-dom";
 
 // Function to toggle between themes
 function toggleTheme(themes: string[]) {
@@ -14,9 +14,11 @@ function toggleTheme(themes: string[]) {
 
 export default function AppBar() {
   const [themes, setThemes] = useState<string[]>([]);
-  const [currentTheme, setCurrentTheme] = useState<string>("corporate"); // Tracks current theme
+  const [currentTheme, setCurrentTheme] = useState<string>("corporate");
+  const [menuOpen, setMenuOpen] = useState(false); // State to control mobile menu
 
   useEffect(() => {
+    // Fetch themes from API
     fetch("/api/themes.json") // Adjust the path if needed
       .then((response) => response.json())
       .then((data) => setThemes(data));
@@ -43,23 +45,54 @@ export default function AppBar() {
   return (
     <nav className="navbar bg-base-200 text-base-content shadow-lg px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center w-full">
+        {/* Logo */}
         <Link to="/" className="text-xl font-bold">
           Omar's Portfolio
         </Link>
-        <div className="flex space-x-2 sm:space-x-4 items-center">
-          <Link to="/" className="btn btn-ghost">
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex items-center justify-center p-2"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <Icon icon="mdi:menu" className="text-2xl" />
+        </button>
+
+        {/* Navigation Links */}
+        <div
+          className={`${
+            menuOpen ? "block" : "hidden"
+          } md:flex items-center space-x-0 md:space-x-4 mt-4 md:mt-0`}
+        >
+          <Link
+            to="/"
+            className="btn btn-ghost w-full md:w-auto text-left md:text-center"
+            onClick={() => setMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link to="/projects" className="btn btn-ghost">
+          <Link
+            to="/projects"
+            className="btn btn-ghost w-full md:w-auto text-left md:text-center"
+            onClick={() => setMenuOpen(false)}
+          >
             Projects
           </Link>
-          <Link to="/video-game" className="btn btn-ghost">
+          <Link
+            to="/video-game"
+            className="btn btn-ghost w-full md:w-auto text-left md:text-center"
+            onClick={() => setMenuOpen(false)}
+          >
             Play me!
           </Link>
           <button
-            className="btn btn-primary p-1 w-10 h-10 flex items-center justify-center"
+            className="btn btn-primary p-1 w-full md:w-10 h-10 flex items-center justify-center mt-2 md:mt-0"
             aria-label="Change Theme"
-            onClick={handleThemeChange}
+            onClick={() => {
+              handleThemeChange();
+              setMenuOpen(false);
+            }}
             disabled={themes.length === 0}
           >
             <Icon icon={themeIcons[currentTheme]} width="28" height="28" />

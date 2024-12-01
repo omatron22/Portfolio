@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify-icon/react";
-import { useNavigate } from "react-router-dom";
 
 const Project = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const [columnCount, setColumnCount] = useState(2);
+
+  useEffect(() => {
+    const updateColumnCount = () => {
+      if (window.innerWidth < 768) {
+        setColumnCount(1);
+      } else {
+        setColumnCount(2);
+      }
+    };
+
+    updateColumnCount(); // Set initial column count
+
+    window.addEventListener("resize", updateColumnCount);
+    return () => window.removeEventListener("resize", updateColumnCount);
+  }, []);
 
   const projects = [
     {
@@ -70,90 +84,78 @@ const Project = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-base-100 to-base-200 py-16 px-6">
-      <div
-        className="max-w-7xl w-full mx-auto"
-        style={{
-          columnCount: 2,
-          columnGap: "1.5rem",
-        }}
-      >
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="bg-base-100 rounded-lg shadow-md mb-6 break-inside-avoid"
-          >
-            {/* Card Header with Title Bar */}
-            <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4 rounded-t-lg">
-              <h1 className="text-lg font-semibold text-base-content">{project.title}</h1>
-              <div className="flex space-x-2">
+    <div className="bg-gradient-to-b from-base-100 to-base-200 min-h-screen flex flex-col items-center">
+      <div className="py-16 px-6 w-full max-w-[1920px]">
+        <div
+          className="w-full mx-auto"
+          style={{
+            columnCount: columnCount,
+            columnGap: "1.5rem",
+          }}
+        >
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-base-100 rounded-lg shadow-md mb-6 break-inside-avoid"
+            >
+              {/* Card Header with Title Bar */}
+              <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4 rounded-t-lg">
+                <h1 className="text-lg font-semibold text-base-content">
+                  {project.title}
+                </h1>
+              </div>
+              {/* Card Content */}
+              <div className="p-4 space-y-2">
+                <div className="flex flex-col text-base space-y-1">
+                  {project.company && (
+                    <div className="flex items-center space-x-2">
+                      <Icon
+                        icon="mdi:briefcase-outline"
+                        className="text-primary"
+                      />
+                      <span className="font-medium text-base-content">
+                        {project.company}
+                      </span>
+                    </div>
+                  )}
+                  {project.purpose && (
+                    <div className="flex items-center space-x-2">
+                      <Icon icon="mdi:target" className="text-error" />
+                      <span className="text-base-content">
+                        {project.purpose}
+                      </span>
+                    </div>
+                  )}
+                  {project.language && (
+                    <div className="flex items-center space-x-2">
+                      <Icon icon="mdi:code-tags" className="text-success" />
+                      <span className="text-base-content">
+                        {project.language}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                {project.description && (
+                  <p className="text-sm text-base-content leading-relaxed mt-2">
+                    {project.description}
+                  </p>
+                )}
+                <div className="flex justify-end mt-2 space-x-4">
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
+                    >
+                      <Icon icon="mdi:github" className="text-2xl" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-            {/* Card Content */}
-            <div className="p-4 space-y-2">
-              <div className="flex flex-col text-base space-y-1">
-                {project.company && (
-                  <div className="flex items-center space-x-2">
-                    <Icon icon="mdi:briefcase-outline" className="text-primary" />
-                    <span className="font-medium text-base-content">{project.company}</span>
-                  </div>
-                )}
-                {project.purpose && (
-                  <div className="flex items-center space-x-2">
-                    <Icon icon="mdi:target" className="text-error" />
-                    <span className="text-base-content">{project.purpose}</span>
-                  </div>
-                )}
-                {project.language && (
-                  <div className="flex items-center space-x-2">
-                    <Icon icon="mdi:code-tags" className="text-success" />
-                    <span className="text-base-content">{project.language}</span>
-                  </div>
-                )}
-              </div>
-              {project.description && (
-                <p className="text-sm text-base-content leading-relaxed mt-2">{project.description}</p>
-              )}
-              <div className="flex justify-end mt-2 space-x-4">
-                {/* Dog Icon for Video Game */}
-                {project.title === "Samson The Game: A 2D Platformer" && (
-                  <button
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                      navigate("/video-game");
-                    }}
-                    className="text-base-content hover:text-success transition-transform transform hover:scale-110 cursor-pointer"
-                  >
-                    <Icon icon="mdi:dog" className="text-2xl" />
-                  </button>
-                )}
-                {/* Home Icon for Portfolio Website */}
-                {project.title === "Personal Portfolio Website" && (
-                  <button
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                      navigate("/");
-                    }}
-                    className="text-base-content hover:text-info transition-transform transform hover:scale-110 cursor-pointer"
-                  >
-                    <Icon icon="mdi:home" className="text-2xl" />
-                  </button>
-                )}
-                {/* GitHub Icon */}
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
-                  >
-                    <Icon icon="mdi:github" className="text-2xl" />
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

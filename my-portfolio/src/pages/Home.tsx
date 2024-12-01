@@ -1,12 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import TypingAnimation from "../components/TypingAnimation";
 import { Icon } from "@iconify-icon/react";
-import SimpleImageSlider from "react-simple-image-slider"; // Image slider component
+import SimpleImageSlider from "react-simple-image-slider";
 import MySVGComponent from '../components/MySVGComponent';
 import MySVGComponent2 from '../components/MySVGComponent2';
 
 const Home = () => {
-
   const aboutSectionRef = useRef<HTMLDivElement | null>(null);
 
   const handleHeroClick = () => {
@@ -19,11 +18,46 @@ const Home = () => {
       });
     }
   };
-  
-  
+
+  // Scaling logic
+  const [scale, setScale] = useState(1);
+
+  const scalingContainerRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const designWidth = 1440; // Your full-screen design width in pixels
+
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      const scaleFactor = currentWidth / designWidth;
+      setScale(scaleFactor);
+
+      if (contentRef.current && scalingContainerRef.current) {
+        const contentHeight = contentRef.current.offsetHeight; // Unscaled height
+        const scaledHeight = contentHeight * scaleFactor; // Scaled visual height
+        scalingContainerRef.current.style.height = `${scaledHeight}px`;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial scale
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-base-100 text-base-content">
+    <div className="bg-base-100 text-base-content overflow-hidden">
+      {/* Scaling container */}
+      <div
+        ref={scalingContainerRef}
+        style={{
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+          width: `${100 / scale}%`,
+          // Height is set dynamically
+        }}
+      >
+        <div ref={contentRef}>
 
 {/* Hero Section */}
 <section className="relative flex flex-col justify-start items-center p-0 m-0 overflow-hidden h-auto">
@@ -47,7 +81,7 @@ const Home = () => {
 
 {/* About Section */}
 <section ref={aboutSectionRef} className="relative about bg-base-200 py-10 flex">
-<div className="lg:w-1/2 text-left px-10 z-20">
+<div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
     <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
     {/* Header Tab as Window Title Bar */}
@@ -64,9 +98,9 @@ const Home = () => {
       </div>
     </div>
   </div>
-  <div className="lg:w-1/2 flex items-center justify-center z-10">
+  <div className="w-1/2 flex items-center justify-center z-10">
 {/* Image Slider Section */}
-<div className="rounded-xl overflow-hidden shadow-lg lg:ml-40" style={{ width: '450px', height: '300px' }}>
+<div className="rounded-xl overflow-hidden shadow-lg ml-40" style={{ width: '450px', height: '300px' }}>
   <SimpleImageSlider
     width={450}
     height={300}
@@ -91,10 +125,10 @@ const Home = () => {
 
 {/* Education Section */}
 <section className="relative education bg-base-200 py-10 flex">
-  <div className="lg:w-1/2 flex items-center justify-start z-10">
+  <div className="w-1/2 flex items-center justify-start z-10">
     {/* Empty left space */}
   </div>
-  <div className="lg:w-1/2 text-left px-10 z-20">
+  <div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
     <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
@@ -153,7 +187,7 @@ const Home = () => {
 
 {/* Experience Section */}
 <section className="relative experience bg-base-100 py-10 flex">
-  <div className="lg:w-1/2 text-left px-10 z-20">
+  <div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
     <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
@@ -204,7 +238,7 @@ const Home = () => {
       </div>
     </div>
   </div>
-  <div className="lg:w-1/2 flex items-center justify-center z-10">
+  <div className="w-1/2 flex items-center justify-center z-10">
     {/* Empty right space */}
   </div>
 </section>
@@ -307,6 +341,9 @@ const Home = () => {
   <p className="text-sm">© 2024 Omar Espinoza</p>
 </footer>
     </div>
+    </div>
+    </div>
+
   );
 };
 
