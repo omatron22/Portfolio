@@ -30,15 +30,25 @@ const Home = () => {
 
     const handleResize = () => {
       const currentWidth = window.innerWidth;
+    
+      // Detect pinch zoom on mobile devices
+      const isPinchZoomed = window.innerWidth !== window.outerWidth;
+    
+      if (isPinchZoomed) {
+        // Skip the scaling logic during pinch zoom
+        return;
+      }
+    
       const scaleFactor = currentWidth / designWidth;
       setScale(scaleFactor);
-
+    
       if (contentRef.current && scalingContainerRef.current) {
         const contentHeight = contentRef.current.offsetHeight; // Unscaled height
         const scaledHeight = contentHeight * scaleFactor; // Scaled visual height
         scalingContainerRef.current.style.height = `${scaledHeight}px`;
       }
     };
+    
 
     window.addEventListener('resize', handleResize);
     handleResize(); // Set initial scale
