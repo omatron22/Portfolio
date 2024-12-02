@@ -259,19 +259,19 @@ const Home = () => {
     {/* Skills */}
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
     <span className="text-xl font-semibold text-lg">Frontend Development</span>
-      <p className="text-base text-lg">HTML, CSS, JavaScript, React</p>
+      <p className="text-base text-lg">HTML, CSS, JavaScript, React, Tailwind CSS, DaisyUI</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Backend Development</span>
-      <p className="text-base text-lg">Node.js, Express, SQL, MongoDB</p>
+      <p className="text-base text-lg">Node.js, MongoDB, SQL</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">UI/UX Design</span>
-      <p className="text-base text-lg">Figma, Adobe XD, Adobe Photoshop</p>
+      <p className="text-base text-lg">Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Database Management</span>
-      <p className="text-base text-lg">MySQL, PostgreSQL, Firebase</p>
+      <p className="text-base text-lg">Relational Databases (MySQL), NoSQL Databases (Firebase)</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Version Control</span>
@@ -279,11 +279,11 @@ const Home = () => {
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Cloud Services</span>
-      <p className="text-base text-lg">Google Cloud</p>
+      <p className="text-base text-lg">Google Cloud, Firebase Hosting</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">Automation</span>
-      <p className="text-base text-lg">Excel Macros, Python Scripting</p>
+      <p className="text-base text-lg">Python Scripting, C/C++</p>
     </div>
     <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
       <span className="text-xl font-semibold text-lg">DevOps</span>
@@ -299,25 +299,18 @@ const Home = () => {
     {/* Icon List */}
     {[{ src: "/c:c++.png", alt: "C/C++", width: "w-24", height: "h-24" },
       { src: "/python.png", alt: "Python", width: "w-14", height: "h-14" },
-      { src: "/java.png", alt: "Java", width: "w-14", height: "h-14" },
       { src: "/javascript.png", alt: "JavaScript", width: "w-14", height: "h-14" },
-      { src: "/logo192.png", alt: "React.JS", width: "w-14", height: "h-14" },
-      { src: "/SQL.png", alt: "SQL", width: "w-14", height: "h-14" },
-      { src: "/mongo.png", alt: "MongoDB", width: "w-14", height: "h-14" },
-      { src: "/git.png", alt: "Git", width: "w-14", height: "h-14" },
-      { src: "/bash.png", alt: "Bash", width: "w-14", height: "h-14" },
-      { src: "/macro.png", alt: "Excel Macro", width: "w-14", height: "h-14" },
       { src: "/html.png", alt: "HTML", width: "w-14", height: "h-14" },
       { src: "/css.png", alt: "CSS", width: "w-14", height: "h-14" },
-      { src: "/lisp.png", alt: "Lisp", width: "w-12", height: "h-12" },
-      { src: "/ocaml.png", alt: "OCaml", width: "w-12", height: "h-12" },
-      { src: "/rust.png", alt: "Rust", width: "w-12", height: "h-12" },
-      { src: "/prolog.png", alt: "Prolog", width: "w-12", height: "h-12" },
-      { src: "/haskell.png", alt: "Haskell", width: "w-14", height: "h-14" },
+      { src: "/logo192.png", alt: "React.JS", width: "w-14", height: "h-14" },
+      { src: "/git.png", alt: "Git", width: "w-14", height: "h-14" },
+      { src: "/SQL.png", alt: "SQL", width: "w-14", height: "h-14" },
+      { src: "/mongo.png", alt: "MongoDB", width: "w-14", height: "h-14" },
       { src: "/firebase.png", alt: "Firebase", width: "w-14", height: "h-14" },
       { src: "/google.png", alt: "Google Cloud", width: "w-12", height: "h-12" },
-      { src: "/photoshop.png", alt: "Photoshop", width: "w-12", height: "h-12" },
-      { src: "/canva.png", alt: "Canva", width: "w-16", height: "h-16" }].map((icon, index) => (
+      { src: "/photoshop.png", alt: "Photoshop", width: "w-11", height: "h-11" },
+      { src: "/illustrator.png", alt: "illustrator", width: "w-16", height: "h-16" }, 
+      { src: "/xd.png", alt: "xd", width: "w-24", height: "h-24" }].map((icon, index) => (
       <div key={index} className="flex items-center justify-center">
         <img src={icon.src} alt={icon.alt} className={`${icon.width} ${icon.height} object-contain`} />
       </div>
