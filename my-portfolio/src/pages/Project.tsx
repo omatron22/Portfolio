@@ -79,7 +79,7 @@ const Project = () => {
       It features a dynamic and responsive UI built with React, designed with student communication in mind. 
       The backend leverages Firebase for real-time database management, enabling instant message syncing and secure Google sign-in authentication. 
       Key features include streamlined Google Authentication, real-time chat functionality, image sharing, a comprehensive chat history feature, and a user-friendly dark mode toggle.`,
-      githubLink: "#", // Add your GitHub link here if available
+      githubLink: "https://github.com/omatron22/Bean-Pod", 
     },
   ];
 
