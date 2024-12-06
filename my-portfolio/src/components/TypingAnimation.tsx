@@ -40,7 +40,7 @@ const TypingAnimation = ({ texts, speed }: Props) => {
   }, []);
 
   return (
-    <h1 className="text-5xl font-bold min-h-[4rem]"> {/* Set a minimum height for the container */}
+    <h1 className="text-5xl font-bold font-pixelon min-h-[4rem]"> {/* Set a minimum height for the container */}
       {currentText}
       <span className={isCursorVisible ? "inline" : "hidden"}>|</span> {/* Cursor animation */}
     </h1>

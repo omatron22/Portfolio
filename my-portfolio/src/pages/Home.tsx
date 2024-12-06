@@ -91,18 +91,17 @@ const Home = () => {
 
 {/* About Section */}
 <section ref={aboutSectionRef} className="relative about bg-base-200 py-10 flex">
-<div className="w-1/2 text-left px-10 z-20">
+  <div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
-    {/* Header Tab as Window Title Bar */}
+    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
+      {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-semibold">About Me</h2>
-        <div className="flex space-x-2">
-        </div>
+        <h2 className="text-lg font-semibold font-pixelon">About Me</h2> {/* Applied Pixelon font */}
+        <div className="flex space-x-2"></div>
       </div>
       {/* Card Content */}
       <div className="p-6">
-        <p className="text-lg leading-relaxed text-base-content">
+        <p className="text-lg leading-relaxed text-base-content font-Inter">
           Hi! My name is Omar Espinoza. I'm from Ventura, California. I spend most of my time working on a project, making music, or being outdoors.
         </p>
       </div>
@@ -110,7 +109,10 @@ const Home = () => {
   </div>
   <div className="w-1/2 flex items-center justify-center z-10">
 {/* Image Slider Section */}
-<div className="rounded-xl overflow-hidden shadow-lg ml-40" style={{ width: '450px', height: '300px' }}>
+<div
+  className="overflow-hidden shadow-lg ml-40 border-8 border-base-300"
+  style={{ width: '450px', height: '300px' }}
+>
   <SimpleImageSlider
     width={450}
     height={300}
@@ -124,8 +126,8 @@ const Home = () => {
     autoPlay={false}
     slideDuration={3}
     style={{
-      borderRadius: '12px',
-      clipPath: 'inset(0 round 12px)',
+      borderRadius: '0', // Keeps edges squared
+      clipPath: 'inset(0)', // Keeps clipping squared
     }}
   />
 </div>
@@ -140,16 +142,15 @@ const Home = () => {
   </div>
   <div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
+    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-semibold">Education</h2>
-        <div className="flex space-x-2">
-        </div>
+        <h2 className="text-lg font-pixelon">Education</h2> {/* Applied Pixelon font */}
+        <div className="flex space-x-2"></div>
       </div>
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-lg">
+        <h3 className="text-2xl font-Inter text-lg">
           <a
             href="https://www.ucla.edu/"
             target="_blank"
@@ -159,12 +160,12 @@ const Home = () => {
             University of California, Los Angeles
           </a>
         </h3>
-        <p className="text-lg text-secondary">(2020-2024)</p>
-        <p className="text-lg">B.A. Linguistics and Computer Science</p>
+        <p className="text-lg font-pixelon text-secondary">(2020-2024)</p>
+        <p className="text-lg font-Inter">B.A. Linguistics and Computer Science</p>
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:snowflake" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">
+            <p className="text-lg font-Inter">
               <a
                 href="https://uclaclubsports.com/sports/mens-skiing"
                 target="_blank"
@@ -177,7 +178,7 @@ const Home = () => {
           </div>
           <div className="flex items-center">
             <Icon icon="mdi:account-group" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">
+            <p className="text-lg font-Inter">
               <a
                 href="https://uclasoles.org/"
                 target="_blank"
@@ -195,21 +196,20 @@ const Home = () => {
 </section>
 
 
+
 {/* Experience Section */}
 <section className="relative experience bg-base-100 py-10 flex">
   <div className="w-1/2 text-left px-10 z-20">
     {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300">
+    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
       {/* Header Tab as Window Title Bar */}
       <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-semibold">Experience</h2>
-        <div className="flex space-x-2">
-
-        </div>
+        <h2 className="text-lg font-pixelon">Experience</h2> {/* Applied Pixelon font */}
+        <div className="flex space-x-2"></div>
       </div>
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-lg">
+        <h3 className="text-2xl font-Inter text-lg">
           <a
             href="https://experiorlabs.com/"
             target="_blank"
@@ -219,14 +219,14 @@ const Home = () => {
             Experior Laboratories
           </a>
         </h3>
-        <p className="text-lg text-secondary">Programming Intern (Summer 2023)</p>
-        <p>
+        <p className="text-lg font-pixelon text-secondary">Programming Intern (Summer 2023)</p>
+        <p className="font-Inter">
           Developed shortcuts for the LabVIEW software using C, SQLite, and other technologies. Learn more about the project 
           <a
             href="https://github.com/omatron22/GPIB-to-SQL-DLL"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-info hover:underline ml-1"
+            className="text-info hover:underline ml-1 font-pixelon"
           >
             here.
           </a>
@@ -234,15 +234,15 @@ const Home = () => {
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:tools" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">Automation Project Lead</p>
+            <p className="text-lg font-Inter">Automation Project Lead</p>
           </div>
           <div className="flex items-center">
             <Icon icon="mdi:database" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">Optimized Data Management Processes</p>
+            <p className="text-lg font-Inter">Optimized Data Management Processes</p>
           </div>
           <div className="flex items-center">
             <Icon icon="mdi:code-tags" className="text-2xl text-base-400 mr-3" />
-            <p className="text-lg">C, SQLite, LabVIEW Expertise</p>
+            <p className="text-lg font-Inter">C, SQLite, LabVIEW Expertise</p>
           </div>
         </div>
       </div>
@@ -267,40 +267,41 @@ const Home = () => {
 <section className="skills bg-base-100 py-16 px-8">
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
     {/* Skills */}
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-    <span className="text-xl font-semibold text-lg">Frontend Development</span>
-      <p className="text-base text-lg">HTML, CSS, JavaScript, React, Tailwind CSS, DaisyUI</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Frontend Development</span>
+      <p className="text-base font-pixelon text-lg">HTML, CSS, JavaScript, React, Tailwind CSS, DaisyUI</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Backend Development</span>
-      <p className="text-base text-lg">Node.js, MongoDB, SQL</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Backend Development</span>
+      <p className="text-base font-pixelon text-lg">Node.js, MongoDB, SQL</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">UI/UX Design</span>
-      <p className="text-base text-lg">Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">UI/UX Design</span>
+      <p className="text-base font-pixelon text-lg">Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Database Management</span>
-      <p className="text-base text-lg">Relational Databases (MySQL), NoSQL Databases (Firebase)</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Database Management</span>
+      <p className="text-base font-pixelon text-lg">Relational Databases (MySQL), NoSQL Databases (Firebase)</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Version Control</span>
-      <p className="text-base text-lg">Git, GitHub</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Version Control</span>
+      <p className="text-base font-pixelon text-lg">Git, GitHub</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Cloud Services</span>
-      <p className="text-base text-lg">Google Cloud, Firebase Hosting</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Cloud Services</span>
+      <p className="text-base font-pixelon text-lg">Google Cloud, Firebase Hosting</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">Automation</span>
-      <p className="text-base text-lg">Python Scripting, C/C++</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">Automation</span>
+      <p className="text-base font-pixelon text-lg">Python Scripting, C/C++</p>
     </div>
-    <div className="bg-base-100 border border-base-200 rounded-lg p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-semibold text-lg">DevOps</span>
-      <p className="text-base text-lg">Docker, CI/CD</p>
+    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
+      <span className="text-xl font-pixelon text-lg">DevOps</span>
+      <p className="text-base font-pixelon text-lg">Docker, CI/CD</p>
     </div>
   </div>
 </section>
+
 
 
 {/* Tech Stack Section */}
@@ -341,12 +342,11 @@ const Home = () => {
       <Icon icon="mdi:file-pdf-box" className="text-4xl hover:text-error hover:scale-110 transition-transform duration-300" />
     </a>
   </div>
-  <p className="text-sm">© 2024 Omar Espinoza</p>
+  <p className="text-sm font-pixelon">© 2024 Omar Espinoza</p>
 </footer>
     </div>
     </div>
     </div>
-
   );
 };
 

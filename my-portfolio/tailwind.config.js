@@ -12,6 +12,9 @@ module.exports = {
         '75': '0.75',
         '100': '1',
       },
+      fontFamily: {
+        pixelon: ['Pixelon', 'sans-serif'], // Add the Pixelon font
+      },
     },
   },
   plugins: [require('daisyui')],

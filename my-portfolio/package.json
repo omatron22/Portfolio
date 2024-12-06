@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/press-start-2p": "^5.1.0",
     "@iconify-icon/react": "^2.1.0",
     "@react-three/drei": "^9.117.2",
     "@react-three/fiber": "^8.17.10",

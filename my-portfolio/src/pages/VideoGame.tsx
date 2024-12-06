@@ -109,10 +109,10 @@ const VideoGame: React.FC = () => {
       {/* Dedication Section */}
       <section className="py-8 bg-gradient-to-b from-base-200 to-base-300">
         <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-base-content mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-pixelon text-base-content mb-4">
             Dedicated to My Best Friend
           </h2>
-          <p className="text-lg md:text-xl text-base-content mb-8">
+          <p className="text-lg md:text-xl font-Inter text-base-content mb-8">
             In loving memory of someone very important to me. Rest in peace Samson.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
