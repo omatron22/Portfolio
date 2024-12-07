@@ -43,7 +43,7 @@ export default function AppBar() {
   };
 
   return (
-    <nav className="navbar bg-base-200 text-base-content shadow-lg px-4 sm:px-6 lg:px-8">
+    <nav className="navbar bg-base-200 text-base-content shadow-none px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold font-Inter">
@@ -67,27 +67,27 @@ export default function AppBar() {
         >
           <Link
             to="/"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center"
+            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             to="/projects"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center"
+            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Projects
           </Link>
           <Link
             to="/video-game"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center"
+            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Play me!
           </Link>
           <button
-            className="btn btn-primary p-1 w-full md:w-10 h-10 flex items-center justify-center mt-2 md:mt-0"
+            className="btn btn-primary p-1 w-full md:w-10 h-10 flex items-center justify-center mt-2 md:mt-0 rounded-none"
             aria-label="Change Theme"
             onClick={() => {
               handleThemeChange();
