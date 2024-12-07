@@ -87,16 +87,26 @@ export default function AppBar() {
             Play me!
           </Link>
           <button
-            className="btn btn-primary p-1 w-full md:w-10 h-10 flex items-center justify-center mt-2 md:mt-0 rounded-none"
-            aria-label="Change Theme"
-            onClick={() => {
-              handleThemeChange();
-              setMenuOpen(false);
-            }}
-            disabled={themes.length === 0}
-          >
-            <Icon icon={themeIcons[currentTheme]} width="28" height="28" />
-          </button>
+  className={`p-2 flex items-center justify-center mt-2 md:mt-0 border-2 border-primary bg-base-100 hover:bg-primary hover:text-base-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary ${
+    menuOpen ? "w-full" : "md:w-10 h-10 rounded-none"
+  }`}
+  aria-label="Change Theme"
+  onClick={() => {
+    handleThemeChange();
+    setMenuOpen(false);
+  }}
+  disabled={themes.length === 0}
+  style={{
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+  }}
+>
+  <Icon
+    icon={themeIcons[currentTheme]}
+    width="24"
+    height="24"
+    className="inherit" // Inherits styles from the button
+  />
+</button>
         </div>
       </div>
     </nav>
