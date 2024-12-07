@@ -477,7 +477,7 @@ const Game: React.FC<GameProps> = ({ character, onCharacterSelect, onMainMenu })
 
   return (
     <div
-    className="relative w-[800px] h-[460px] mx-auto border-[10px] border-secondary rounded-lg shadow-lg bg-transparent box-border overflow-hidden"
+    className="relative w-[800px] h-[460px] mx-auto border-[10px] border-secondary  shadow-lg bg-transparent box-border overflow-hidden"
     >
       {/* Show the HowToPlay screen before starting the game */}
       {showGuide ? (

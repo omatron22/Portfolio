@@ -6,6 +6,7 @@ interface HowToPlayProps {
 
 const HowToPlay: React.FC<HowToPlayProps> = ({ onClose }) => {
   return (
+    
     <div
       style={{
         position: 'absolute',

@@ -106,58 +106,75 @@ const VideoGame: React.FC = () => {
         </>
       )}
 
-      {/* Dedication Section */}
-      <section className="py-8 bg-gradient-to-b from-base-200 to-base-300">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold font-pixelon text-base-content mb-4">
-            Dedicated to My Best Friend
-          </h2>
-          <p className="text-lg md:text-xl font-Inter text-base-content mb-8">
-            In loving memory of someone very important to me. Rest in peace Samson.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              {
-                src: '/assets/mybestfriend.JPG',
-                alt: 'My Best Friend 1',
-                style: { transform: 'rotate(-3deg)' },
-              },
-              {
-                src: '/assets/happy.JPG',
-                alt: 'My Best Friend 2',
-                style: { transform: 'rotate(2deg)' },
-              },
-              {
-                src: '/assets/walking.jpeg',
-                alt: 'My Best Friend 3',
-                style: { transform: 'rotate(-1deg)' },
-              },
-              {
-                src: '/assets/fun.JPG',
-                alt: 'My Best Friend 4',
-                style: { transform: 'rotate(4deg)' },
-              },
-              {
-                src: '/assets/camaro.jpg',
-                alt: 'My Best Friend 5',
-                style: { transform: 'rotate(-2deg)' },
-              },
-            ].map((image, index) => (
-              <div
-                key={index}
-                className="w-28 sm:w-32 md:w-40 lg:w-48 overflow-hidden rounded-xl shadow-lg transition-transform transform hover:scale-110 hover:shadow-xl"
-                style={image.style}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
+{/* Dedication Section */}
+<section className="py-8 bg-gradient-to-b from-base-200 to-base-300">
+  <div className="max-w-4xl mx-auto text-center px-6">
+    <h2 className="text-3xl md:text-4xl font-extrabold font-pixelon text-base-content mb-4">
+      Dedicated to My Best Friend
+    </h2>
+    <p className="text-lg md:text-xl font-Inter text-base-content mb-8">
+      In loving memory of someone very important to me. Rest in peace Samson.
+    </p>
+    <div className="flex flex-col items-center gap-4">
+      {/* Top Row */}
+      <div className="flex justify-center gap-4">
+        <div
+          className="w-40 sm:w-40 md:w-40 lg:w-58 overflow-hidden shadow-lg border-4 border-base-100 transition-transform transform hover:scale-110 hover:shadow-xl"
+          style={{ transform: 'rotate(-3deg)' }}
+        >
+          <img
+            src="/assets/mybestfriend.JPG"
+            alt="My Best Friend 1"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+        <div
+          className="w-28 sm:w-32 md:w-40 lg:w-50 overflow-hidden shadow-lg border-4 border-base-100 transition-transform transform hover:scale-110 hover:shadow-xl"
+          style={{ transform: 'rotate(2deg)' }}
+        >
+          <img
+            src="/assets/happy.JPG"
+            alt="My Best Friend 2"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+      {/* Bottom Row */}
+      <div className="flex justify-center gap-4">
+        <div
+          className="w-40 sm:w-32 md:w-40 lg:w-58 overflow-hidden shadow-lg border-4 border-base-100 transition-transform transform hover:scale-110 hover:shadow-xl"
+          style={{ transform: 'rotate(4deg)' }}
+        >
+          <img
+            src="/assets/fun.JPG"
+            alt="My Best Friend 4"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="w-28 sm:w-32 md:w-40 lg:w-50 overflow-hidden shadow-lg border-4 border-base-100 transition-transform transform hover:scale-110 hover:shadow-xl"
+          style={{ transform: 'rotate(-2deg)' }}
+        >
+          <img
+            src="/assets/camaro.jpg"
+            alt="My Best Friend 5"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="w-40 sm:w-32 md:w-40 lg:w-48 overflow-hidden shadow-lg border-4 border-base-100 transition-transform transform hover:scale-110 hover:shadow-xl"
+          style={{ transform: 'rotate(-1deg)' }}
+        >
+          <img
+            src="/assets/walking.jpeg"
+            alt="My Best Friend 3"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

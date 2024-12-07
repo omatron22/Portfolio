@@ -92,7 +92,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onPlay }) => {
 
   return (
     <div
-      className="relative w-[800px] h-[460px] mx-auto border-[10px] border-secondary rounded-lg shadow-lg bg-transparent box-border overflow-hidden"
+      className="relative w-[800px] h-[460px] mx-auto border-[10px] border-secondary shadow-lg bg-transparent box-border overflow-hidden"
     >
       <div ref={introRef} className="w-full h-full"></div>
 

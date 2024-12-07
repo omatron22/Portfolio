@@ -7,7 +7,7 @@ interface CharacterSelectProps {
 const CharacterSelect: React.FC<CharacterSelectProps> = ({ onSelectCharacter }) => {
   return (
     <div
-      className="relative w-[800px] h-[460px] mx-auto border-[10px] border-secondary rounded-lg shadow-lg bg-transparent box-border overflow-hidden flex items-center justify-center"
+      className="relative w-[800px] h-[460px] mx-auto border-[10px] border-primary shadow-lg bg-transparent box-border overflow-hidden flex items-center justify-center"
       style={{
         backgroundImage: `url(/assets/choose.png)`,
         backgroundSize: 'cover',
