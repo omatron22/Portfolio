@@ -46,7 +46,7 @@ export default function AppBar() {
     <nav className="navbar bg-base-200 text-base-content shadow-none px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold font-Inter">
+        <Link to="/" className="text-xl font-clash font-semibold">
           Omar's Portfolio
         </Link>
 
@@ -67,27 +67,27 @@ export default function AppBar() {
         >
           <Link
             to="/"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             to="/projects"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Projects
           </Link>
           <Link
             to="/video-game"
-            className="btn btn-ghost w-full md:w-auto text-left font-Inter md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Play me!
           </Link>
           <button
-  className={`p-2 flex items-center justify-center mt-2 md:mt-0 border-2 border-primary bg-base-100 hover:bg-primary hover:text-base-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary ${
+className={`p-2 flex items-center justify-center mt-2 md:mt-0 border-2 border-base-content bg-base-100 hover:bg-primary hover:border-primary hover:text-base-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary ${
     menuOpen ? "w-full" : "md:w-10 h-10 rounded-none"
   }`}
   aria-label="Change Theme"

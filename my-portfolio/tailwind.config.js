@@ -13,7 +13,8 @@ module.exports = {
         '100': '1',
       },
       fontFamily: {
-        pixelon: ['Pixelon', 'sans-serif'], // Add the Pixelon font
+        clash: ['Clash Display', 'sans-serif'], // Add Clash Display font
+        pixelon: ['Pixelon', 'sans-serif'], // Add Pixelon font
       },
     },
   },

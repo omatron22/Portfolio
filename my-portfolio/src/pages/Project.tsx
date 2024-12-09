@@ -84,80 +84,74 @@ const Project = () => {
   ];
 
   return (
-<div className="bg-gradient-to-b from-base-100 to-base-200 min-h-screen flex flex-col items-center">
-  <div className="py-16 px-6 w-full max-w-[1920px]">
-    <div
-      className="w-full mx-auto"
-      style={{
-        columnCount: columnCount,
-        columnGap: "1.5rem",
-      }}
-    >
-      {projects.map((project, index) => (
-        <div
-          key={index}
-          className="bg-base-100 shadow-md mb-6 break-inside-avoid"
+    <div className="bg-gradient-to-b from-base-100 to-base-200 min-h-screen flex flex-col items-center">
+      <div className="py-16 px-6 w-full max-w-[1920px]">
+        <div 
+          className="w-full mx-auto" 
+          style={{ 
+            columnCount: columnCount, 
+            columnGap: "1.5rem" 
+          }}
         >
-          {/* Card Header with Title Bar */}
-          <div className="bg-base-300 text-base-content flex items-center justify-between py-2 px-4">
-            <h1 className="text-lg font-semibold font-pixelon text-base-content">
-              {project.title}
-            </h1>
-          </div>
-          {/* Card Content */}
-          <div className="p-4 space-y-2">
-            <div className="flex flex-col text-base space-y-1">
-              {project.company && (
-                <div className="flex items-center space-x-2">
-                  <Icon
-                    icon="mdi:briefcase-outline"
-                    className="text-primary"
-                  />
-                  <span className="font-medium font-Inter text-base-content">
-                    {project.company}
-                  </span>
-                </div>
-              )}
-              {project.purpose && (
-                <div className="flex items-center space-x-2">
-                  <Icon icon="mdi:target" className="text-error" />
-                  <span className="text-base-content font-Inter">
-                    {project.purpose}
-                  </span>
-                </div>
-              )}
-              {project.language && (
-                <div className="flex items-center space-x-2">
-                  <Icon icon="mdi:code-tags" className="text-success" />
-                  <span className="text-base-content font-Inter">
-                    {project.language}
-                  </span>
-                </div>
-              )}
-            </div>
-            {project.description && (
-              <p className="text-sm text-base-content font-Inter leading-relaxed mt-2">
+          {projects.map((project, index) => (
+            <div 
+              key={index} 
+              className="bg-base-100 shadow-lg border border-base-300 rounded-lg p-6 mb-6 break-inside-avoid"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h1 className="text-xl font-clash font-semibold text-base-content">
+                  {project.title}
+                </h1>
+              </div>
+
+              <div className="space-y-4">
+                {project.company && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:briefcase-outline" className="text-primary" />
+                    <span className="font-clash font-medium text-base-content">
+                      {project.company}
+                    </span>
+                  </div>
+                )}
+                {project.purpose && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:target" className="text-error" />
+                    <span className="font-clash font-medium text-base-content">
+                      {project.purpose}
+                    </span>
+                  </div>
+                )}
+                {project.language && (
+                  <div className="flex items-center space-x-2">
+                    <Icon icon="mdi:code-tags" className="text-success" />
+                    <span className="font-clash font-medium text-base-content">
+                      {project.language}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <p className="text-sm text-base-content font-clash leading-relaxed mt-4">
                 {project.description}
               </p>
-            )}
-            <div className="flex justify-end mt-2 space-x-4">
-              {project.githubLink && (
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
-                >
-                  <Icon icon="mdi:github" className="text-2xl" />
-                </a>
-              )}
+
+              <div className="flex justify-end mt-4">
+                {project.githubLink && (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
+                  >
+                    <Icon icon="mdi:github" className="text-3xl" />
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
-  </div>
-</div>
   );
 };
 

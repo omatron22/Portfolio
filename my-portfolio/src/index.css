@@ -1,16 +1,8 @@
-@font-face {
-    font-family: 'Pixelon';
-    src: url('/public/assets/pixelon.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
+
+
+  @import url('https://api.fontshare.com/css?f[]=clash-display@200,300,400,500,600,700,800,900&display=swap');
+
   
-  @font-face {
-    font-family: 'Inter';
-    src: url('/public/assets/inter.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
   
   @tailwind base;
   @tailwind components;

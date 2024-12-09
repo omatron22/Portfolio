@@ -92,47 +92,49 @@ const Home = () => {
 {/* About Section */}
 <section ref={aboutSectionRef} className="relative about bg-base-200 py-10 flex">
   <div className="w-1/2 text-left px-10 z-20">
-    {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
-      {/* Header Tab as Window Title Bar */}
-      <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-semibold font-pixelon">About Me</h2> {/* Applied Pixelon font */}
-        <div className="flex space-x-2"></div>
-      </div>
+    {/* Content Section as Modern Card */}
+    <div className="bg-base-100 shadow-md border border-base-300 p-6 rounded-lg">
+      {/* Card Header */}
+      <h2 className="text-xl font-clash font-bold  mb-4">
+        About Me
+      </h2>
+
       {/* Card Content */}
-      <div className="p-6">
-        <p className="text-lg leading-relaxed text-base-content font-Inter">
-          Hi! My name is Omar Espinoza. I'm from Ventura, California. I spend most of my time working on a project, making music, or being outdoors.
-        </p>
-      </div>
+      <p className="text-base leading-relaxed text-base-content font-Inter">
+        Hi! My name is Omar Espinoza. I'm from Ventura, California. I spend most of my time working on a project, making music, or being outdoors.
+      </p>
     </div>
   </div>
+
   <div className="w-1/2 flex items-center justify-center z-10">
-{/* Image Slider Section */}
-<div
-  className="overflow-hidden shadow-lg ml-40 border-8 border-base-300"
-  style={{ width: '450px', height: '300px' }}
->
-  <SimpleImageSlider
-    width={450}
-    height={300}
-    images={[
-      { url: "/two.jpeg" },
-      { url: "/one.JPG" },
-      { url: "/three.jpeg" }
-    ]}
-    showBullets={false}
-    showNavs={true}
-    autoPlay={false}
-    slideDuration={3}
-    style={{
-      borderRadius: '0', // Keeps edges squared
-      clipPath: 'inset(0)', // Keeps clipping squared
-    }}
-  />
-</div>
-  </div>
-</section>
+          {/* Image Slider Section */}
+          <div 
+            className="relative overflow-hidden shadow-lg border border-base-300 rounded-lg transition-transform"
+            style={{ maxWidth: '450px', aspectRatio: '3 / 2' }} 
+          >
+            <div 
+              className="bg-base-100 relative h-full w-full overflow-hidden"
+            >
+              <SimpleImageSlider
+                width={450} 
+                height={300}
+                images={[
+                  { url: "/two.jpeg" },
+                  { url: "/one.JPG" },
+                  { url: "/three.jpeg" }
+                ]}
+                showBullets={false} 
+                showNavs={true} 
+                autoPlay={false} 
+                slideDuration={4} 
+                navStyle={2} 
+                navSize={40} 
+                navMargin={10} 
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 {/* Education Section */}
@@ -141,16 +143,17 @@ const Home = () => {
     {/* Empty left space */}
   </div>
   <div className="w-1/2 text-left px-10 z-20">
-    {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
-      {/* Header Tab as Window Title Bar */}
-      <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-pixelon">Education</h2> {/* Applied Pixelon font */}
-        <div className="flex space-x-2"></div>
+    {/* Content Section as Modern Floating Card */}
+    <div className="relative bg-base-100 shadow-md border border-base-300 rounded-lg overflow-hidden">
+      
+      {/* Header Tab */}
+      <div className="bg-secondary text-base-content py-3 px-4">
+        <h2 className="text-lg font-clash font-semibold">Education</h2>
       </div>
+
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-Inter text-lg">
+        <h3 className="font-clash text-lg">
           <a
             href="https://www.ucla.edu/"
             target="_blank"
@@ -160,8 +163,11 @@ const Home = () => {
             University of California, Los Angeles
           </a>
         </h3>
-        <p className="text-lg font-pixelon text-secondary">(2020-2024)</p>
+        
+        <p className="text-lg font-clash text-secondary">(2020-2024)</p>
+        
         <p className="text-lg font-Inter">B.A. Linguistics and Computer Science</p>
+        
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:snowflake" className="text-2xl text-base-400 mr-3" />
@@ -197,19 +203,21 @@ const Home = () => {
 
 
 
+
 {/* Experience Section */}
 <section className="relative experience bg-base-100 py-10 flex">
   <div className="w-1/2 text-left px-10 z-20">
-    {/* Content Section as Pop-Up Window */}
-    <div className="relative bg-base-100 shadow-lg overflow-hidden transform transition-transform duration-300">
-      {/* Header Tab as Window Title Bar */}
-      <div className="bg-base-300 text-lg flex items-center justify-between py-2 px-4">
-        <h2 className="text-lg font-pixelon">Experience</h2> {/* Applied Pixelon font */}
-        <div className="flex space-x-2"></div>
+    {/* Content Section as Modern Floating Card */}
+    <div className="relative bg-base-100 shadow-md border border-base-300 rounded-lg overflow-hidden">
+      
+      {/* Header Tab */}
+      <div className="bg-secondary text-base-content py-3 px-4">
+        <h2 className="text-lg font-clash font-semibold">Experience</h2>
       </div>
+
       {/* Card Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-Inter text-lg">
+        <h3 className="font-clash text-lg">
           <a
             href="https://experiorlabs.com/"
             target="_blank"
@@ -219,27 +227,32 @@ const Home = () => {
             Experior Laboratories
           </a>
         </h3>
-        <p className="text-lg font-pixelon text-secondary">Programming Intern (Summer 2023)</p>
-        <p className="font-Inter">
+        
+        <p className="text-lg font-clash text-secondary">Programming Intern (Summer 2023)</p>
+        
+        <p className="text-lg font-Inter">
           Developed shortcuts for the LabVIEW software using C, SQLite, and other technologies. Learn more about the project 
           <a
             href="https://github.com/omatron22/GPIB-to-SQL-DLL"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-info hover:underline ml-1 font-pixelon"
+            className="text-info hover:underline ml-1"
           >
             here.
           </a>
         </p>
+
         <div className="mt-4 space-y-4">
           <div className="flex items-center">
             <Icon icon="mdi:tools" className="text-2xl text-base-400 mr-3" />
             <p className="text-lg font-Inter">Automation Project Lead</p>
           </div>
+
           <div className="flex items-center">
             <Icon icon="mdi:database" className="text-2xl text-base-400 mr-3" />
             <p className="text-lg font-Inter">Optimized Data Management Processes</p>
           </div>
+
           <div className="flex items-center">
             <Icon icon="mdi:code-tags" className="text-2xl text-base-400 mr-3" />
             <p className="text-lg font-Inter">C, SQLite, LabVIEW Expertise</p>
@@ -248,6 +261,7 @@ const Home = () => {
       </div>
     </div>
   </div>
+
   <div className="w-1/2 flex items-center justify-center z-10">
     {/* Empty right space */}
   </div>
@@ -265,43 +279,34 @@ const Home = () => {
 
 {/* Skills Section */}
 <section className="skills bg-base-100 py-16 px-8">
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
-    {/* Skills */}
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Frontend Development</span>
-      <p className="text-base font-pixelon text-lg">HTML, CSS, JavaScript, React, Tailwind CSS, DaisyUI</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Backend Development</span>
-      <p className="text-base font-pixelon text-lg">Node.js, MongoDB, SQL</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">UI/UX Design</span>
-      <p className="text-base font-pixelon text-lg">Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Database Management</span>
-      <p className="text-base font-pixelon text-lg">Relational Databases (MySQL), NoSQL Databases (Firebase)</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Version Control</span>
-      <p className="text-base font-pixelon text-lg">Git, GitHub</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Cloud Services</span>
-      <p className="text-base font-pixelon text-lg">Google Cloud, Firebase Hosting</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">Automation</span>
-      <p className="text-base font-pixelon text-lg">Python Scripting, C/C++</p>
-    </div>
-    <div className="bg-base-100 border border-base-200 p-4 shadow-md flex flex-col items-center space-y-3">
-      <span className="text-xl font-pixelon text-lg">DevOps</span>
-      <p className="text-base font-pixelon text-lg">Docker, CI/CD</p>
-    </div>
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+    {[
+      { title: 'Frontend Development', skills: 'HTML, CSS, JavaScript, React, Tailwind CSS, DaisyUI' },
+      { title: 'Backend Development', skills: 'Node.js, MongoDB, SQL' },
+      { title: 'UI/UX Design', skills: 'Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator' },
+      { title: 'Database Management', skills: 'Relational Databases (MySQL), NoSQL Databases (Firebase)' },
+      { title: 'Version Control', skills: 'Git, GitHub' },
+      { title: 'Cloud Services', skills: 'Google Cloud, Firebase Hosting' },
+      { title: 'Automation', skills: 'Python Scripting, C/C++' },
+      { title: 'DevOps', skills: 'Docker, CI/CD' }
+    ].map((skill, index) => (
+      <div 
+        key={index} 
+        className="relative bg-base-100 shadow-lg p-6 flex flex-col items-center text-center space-y-4 rounded-lg"
+      >
+        {/* Title */}
+        <h2 className="text-xl font-clash font-semibold text-trace">
+          {skill.title}
+        </h2>
+
+        {/* Content */}
+        <p className="text-base font-clash leading-relaxed text-base-content">
+          {skill.skills}
+        </p>
+      </div>
+    ))}
   </div>
 </section>
-
 
 
 {/* Tech Stack Section */}
@@ -339,10 +344,10 @@ const Home = () => {
       <Icon icon="mdi:github" className="text-4xl hover:text-success hover:scale-110 transition-transform duration-300" />
     </a>
     <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
-      <Icon icon="mdi:file-pdf-box" className="text-4xl hover:text-error hover:scale-110 transition-transform duration-300" />
+    <Icon icon="mdi:file-document-outline" className="text-4xl hover:text-error hover:scale-110 transition-transform duration-300" />
     </a>
   </div>
-  <p className="text-sm font-pixelon">© 2024 Omar Espinoza</p>
+  <p className="text-sm font-clash">© 2024 Omar Espinoza</p>
 </footer>
     </div>
     </div>
