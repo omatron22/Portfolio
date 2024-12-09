@@ -67,21 +67,21 @@ export default function AppBar() {
         >
           <Link
             to="/"
-            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-semibold md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Home
           </Link>
           <Link
             to="/projects"
-            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-semibold md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Projects
           </Link>
           <Link
             to="/video-game"
-            className="btn btn-ghost w-full md:w-auto text-left font-clash font-medium md:text-center rounded-none"
+            className="btn btn-ghost w-full md:w-auto text-left font-clash font-semibold md:text-center rounded-none"
             onClick={() => setMenuOpen(false)}
           >
             Play me!
