@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify-icon/react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Project = () => {
   const [columnCount, setColumnCount] = useState(2);
@@ -48,6 +49,7 @@ const Project = () => {
       You can choose between different characters, each with its own design.
       The background music and sound effects are original, recorded and mixed by me.`,
       githubLink: "https://github.com/omatron22/Portfolio",
+      gameLink: "/video-game", 
     },
     {
       title: "Personal Portfolio Website",
@@ -135,7 +137,15 @@ const Project = () => {
                 {project.description}
               </p>
 
-              <div className="flex justify-end mt-4">
+              <div className="flex justify-end mt-4 space-x-4">
+              {project.gameLink && (
+                  <Link 
+                    to={project.gameLink} 
+                    className="text-base-content hover:text-primary transition-transform transform hover:scale-110"
+                  >
+                    <Icon icon="mdi:dog" className="text-3xl" />
+                  </Link>
+                )}
                 {project.githubLink && (
                   <a
                     href={project.githubLink}
