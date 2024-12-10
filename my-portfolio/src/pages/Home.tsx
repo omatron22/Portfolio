@@ -101,8 +101,7 @@ const Home = () => {
 
       {/* Card Content */}
       <p className="text-base leading-relaxed text-base-content font-Inter">
-        Hi, I’m Omar Espinoza from Ventura, California. I like creating things - whether I’m coding a web application, redesigning old furniture, or playing guitar and piano. I aspire to use the world as a vessel for my creativity, finding nothing more satisfying than transforming ideas into tangible experiences that connect with others. I’m looking to apply my technical and creative interests in a role where I can keep learning and improve how people interact with technology.
-      </p>
+      Hi, I’m Omar Espinoza from Ventura, California. I like creating things – whether I’m coding a web application, redesigning old furniture, or improvising on my guitar and piano. I aim to channel my passion into unique, thoughtful creations that bring ideas to life. Few things are more satisfying than transforming a vision into something real that resonates with others. I’m looking to apply my technical and creative skills in a role where I can keep learning and improve how people interact with technology.      </p>
     </div>
   </div>
 
