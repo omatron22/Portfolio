@@ -21,18 +21,6 @@ const Project = () => {
 
   const projects = [
     {
-      title: "Personal Portfolio Website",
-      company: "Personal Project",
-      purpose: "Showcase skills, projects, and personality through a custom-built interactive experience",
-      language: "TypeScript, React, Tailwind CSS, DaisyUI",
-      description: `Built a custom portfolio website using React and TypeScript, designed to create a visually engaging and interactive experience. 
-      The entire site features hand-drawn SVG designs, created from scratch with Illustrator and Photoshop, giving it a distinctive, personal style.
-      The colors dynamically adapt using DaisyUI theme switching, creating a seamless visual experience across different themes.
-      The site also includes a typewriter text animation, an image slider, and smooth scrolling for responsive navigation.
-      An integrated 2D runner game, created with React and Phaser, adds an interactive element, featuring original animations, dynamic character selection, and custom music composed and recorded for a unique touch.`,
-      githubLink: "https://github.com/omatron22/Portfolio",
-    },
-    {
       title: "GPIB to SQL DLL Automation",
       company: (
         <a
@@ -59,6 +47,18 @@ const Project = () => {
       The game features obstacle generation, collision detection, and a scoring system.
       You can choose between different characters, each with its own design.
       The background music and sound effects are original, recorded and mixed by me.`,
+      githubLink: "https://github.com/omatron22/Portfolio",
+    },
+    {
+      title: "Personal Portfolio Website",
+      company: "Personal Project",
+      purpose: "Showcase skills, projects, and personality through a custom-built interactive experience",
+      language: "TypeScript, React, Tailwind CSS, DaisyUI",
+      description: `Built a custom portfolio website using React and TypeScript, designed to create a visually engaging and interactive experience. 
+      The entire site features hand-drawn SVG designs, created from scratch with Illustrator and Photoshop, giving it a distinctive, personal style.
+      The colors dynamically adapt using DaisyUI theme switching, creating a seamless visual experience across different themes.
+      The site also includes a typewriter text animation, an image slider, and smooth scrolling for responsive navigation.
+      An integrated 2D runner game, created with React and Phaser, adds an interactive element, featuring original animations, dynamic character selection, and custom music composed and recorded for a unique touch.`,
       githubLink: "https://github.com/omatron22/Portfolio",
     },
     {
