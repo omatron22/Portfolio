@@ -91,50 +91,51 @@ const Home = () => {
 
 {/* About Section */}
 <section ref={aboutSectionRef} className="relative about bg-base-200 py-10 flex">
-  <div className="w-1/2 text-left px-10 z-20">
+  <div className="w-3/5 text-left px-6 z-20">
     {/* Content Section as Modern Card */}
-    <div className="bg-base-100 shadow-md border border-base-300 p-6 rounded-lg">
+    <div className="bg-base-100 shadow-md border border-base-300 p-6 rounded-lg w-full">
       {/* Card Header */}
-      <h2 className="text-xl font-clash font-bold  mb-4">
+      <h2 className="text-xl font-clash font-bold mb-4">
         About Me
       </h2>
 
       {/* Card Content */}
       <p className="text-base leading-relaxed text-base-content font-Inter">
-        Hi! My name is Omar Espinoza. I'm from Ventura, California. I spend most of my time working on a project, making music, or being outdoors.
+        Hi, I’m Omar Espinoza from Ventura, California. I like creating things - whether I’m coding a web application, redesigning old furniture, or playing guitar and piano. I aspire to use the world as a vessel for my creativity, finding nothing more satisfying than transforming ideas into tangible experiences that connect with others. I’m looking to apply my technical and creative interests in a role where I can keep learning and improve how people interact with technology.
       </p>
     </div>
   </div>
 
-  <div className="w-1/2 flex items-center justify-center z-10">
-          {/* Image Slider Section */}
-          <div 
-            className="relative overflow-hidden shadow-lg border border-base-300 rounded-lg transition-transform"
-            style={{ maxWidth: '450px', aspectRatio: '3 / 2' }} 
-          >
-            <div 
-              className="bg-base-100 relative h-full w-full overflow-hidden"
-            >
-              <SimpleImageSlider
-                width={450} 
-                height={300}
-                images={[
-                  { url: "/two.jpeg" },
-                  { url: "/one.JPG" },
-                  { url: "/three.jpeg" }
-                ]}
-                showBullets={false} 
-                showNavs={true} 
-                autoPlay={false} 
-                slideDuration={4} 
-                navStyle={2} 
-                navSize={40} 
-                navMargin={10} 
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="w-2/5 flex items-center justify-center z-10">
+    {/* Image Slider Section */}
+    <div 
+      className="relative overflow-hidden shadow-lg border border-base-300 rounded-lg transition-transform"
+      style={{ maxWidth: '450px', aspectRatio: '3 / 2' }} 
+    >
+      <div 
+        className="bg-base-100 relative h-full w-full overflow-hidden"
+      >
+        <SimpleImageSlider
+          width={450} 
+          height={300}
+          images={[
+            { url: "/two.jpeg" },
+            { url: "/one.JPG" },
+            { url: "/three.jpeg" }
+          ]}
+          showBullets={false} 
+          showNavs={true} 
+          autoPlay={false} 
+          slideDuration={4} 
+          navStyle={2} 
+          navSize={40} 
+          navMargin={10} 
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 {/* Education Section */}
@@ -269,10 +270,14 @@ const Home = () => {
 
 
 
-            {/* SVG Background */}
-            <div className="absolute w-full h-full z-10 pointer-events-none" style={{ top: '300px', transform: 'scale(1.5)', left: '285px' }}>
-              <MySVGComponent2 className="w-full h-full" />
-            </div>
+{/* SVG Background */}
+<div 
+  className="absolute w-full h-full z-10 pointer-events-none" 
+  style={{ top: '350px', transform: 'scale(1.5)', left: '285px' }} // Adjusted top from 300px to 350px
+>
+  <MySVGComponent2 className="w-full h-full" />
+</div>
+
           </div>
         </section>
       </section>
