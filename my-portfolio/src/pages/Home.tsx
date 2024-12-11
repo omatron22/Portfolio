@@ -118,9 +118,9 @@ const Home = () => {
           width={450} 
           height={300}
           images={[
-            { url: "/two.jpeg" },
+            { url: "/three.jpeg" },
             { url: "/one.JPG" },
-            { url: "/three.jpeg" }
+            { url: "/two.jpeg" }
           ]}
           showBullets={false} 
           showNavs={true} 
