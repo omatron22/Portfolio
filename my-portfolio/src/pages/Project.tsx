@@ -36,7 +36,7 @@ const Project = () => {
       purpose: "Automate data extraction from VISA machines and streamline SQL database integration",
       language: "C, LabVIEW (DLL integration)",
       description: `Developed a solution to automate the process of extracting data from VISA machines, which previously required manual effort and separate LabVIEW algorithms for each machine. The C code communicated with machines to retrieve measurement data, automatically adding it to an SQL database by either updating an existing entry or creating a new one. The code was converted into a DLL for integration with LabVIEW, allowing for easy replication and significantly improving efficiency.`,
-      githubLink: "https://github.com/omatron22/GPIB-to-SQL-DLL",
+      
     },
     {
       title: "Personal Portfolio Website",
